@@ -1,5 +1,6 @@
 import React from 'react'
 import PhotoHolder from './PhotoHolder'
+import ResumeButton from './ResumeButton'
 
 const HomePage = () => {
     return (
@@ -20,7 +21,7 @@ const HomePage = () => {
                     <p className='text-[2rem] sm:text-[3rem] lg:text-[3.8rem] tracking-[10px] text-[#0F1035] dark:text-white transition-colors font-bold leading-tight'>ACHARYA</p>
                 </div>
                 <div className='mt-5 sm:mt-0 tracking-wide sm:tracking-widest text-sm md:text-base px-4 sm:px-0 sm:font-semibold text-center text-[#0F1035] dark:text-white duration-300'>A Web Development enthusiast with silly hobby of creating game on the way. Always ready for some fun :)</div>
-                <div className='grid place-items-center my-3'>Resume</div>
+                <ResumeButton />
             </div>
             <PhotoHolder />
         </div>
