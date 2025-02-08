@@ -2,79 +2,88 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const VisitSiteButton = () => {
+const VisitButton = () => {
   return (
     <StyledWrapper>
-      <a href="#" className="button" style={{ '--clr': '#F5A800' } as React.CSSProperties}>
-        <span className="button__icon-wrapper">
-          <svg viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" className="button__icon-svg" width={10}>
-            <path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor" />
-          </svg>
-          <svg viewBox="0 0 14 15" fill="none" width={10} xmlns="http://www.w3.org/2000/svg" className="button__icon-svg button__icon-svg--copy">
-            <path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor" />
-          </svg>
-        </span>
-        Explore All
-      </a>
+      <button className="button">
+        Visit Now
+        <svg fill="currentColor" viewBox="0 0 24 24" className="icon">
+          <path clipRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" fillRule="evenodd" />
+        </svg>
+      </button>
     </StyledWrapper>
   );
 }
 
 const StyledWrapper = styled.div`
   .button {
-    line-height: 1;
-    text-decoration: none;
-    display: inline-flex;
-    border: none;
-    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    padding-block: 0.5rem;
+    padding-inline: 1.25rem;
+    background-color: #F5A800;
+    border-radius: 9999px;
+    display: flex;
     align-items: center;
-    gap: 0.75rem;
-    background-color: var(--clr);
-    color: #fff;
-    border-radius: 10rem;
-    font-weight: 600;
-    padding: 0.75rem;
-    padding-left: 20px;
-    white-space: nowrap;
+    justify-content: center;
+    cursor: pointer;
+    color: #ffff;
+    gap: 10px;
+    font-weight: bold;
+    border: 3px solid #ffffff4d;
+    outline: none;
     overflow: hidden;
-    text-overflow: ellipsis;
-    transition: background-color 0.3s;
+    font-size: 15px;
   }
 
-  .button__icon-wrapper {
-    flex-shrink: 0;
-    width: 25px;
-    height: 25px;
-    position: relative;
-    color: var(--clr);
-    background-color: #fff;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
+  .icon {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease-in-out;
   }
 
   .button:hover {
-    background-color: #000;
+    transform: scale(1.05);
+    border-color: #fff9;
   }
 
-  .button:hover .button__icon-wrapper {
-    color: #000;
+  .button:hover .icon {
+    transform: translate(4px);
   }
 
-  .button__icon-svg--copy {
+  .button:hover::before {
+    animation: shine 1.5s ease-out infinite;
+  }
+
+  .button::before {
+    content: "";
     position: absolute;
-    transform: translate(-150%, 150%);
+    width: 100px;
+    height: 100%;
+    background-image: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0) 70%
+    );
+    top: 0;
+    left: -100px;
+    opacity: 0.6;
   }
 
-  .button:hover .button__icon-svg:first-child {
-    transition: transform 0.3s ease-in-out;
-    transform: translate(150%, -150%);
-  }
+  @keyframes shine {
+    0% {
+      left: -100px;
+    }
 
-  .button:hover .button__icon-svg--copy {
-    transition: transform 0.3s ease-in-out 0.1s;
-    transform: translate(0);
+    60% {
+      left: 100%;
+    }
+
+    to {
+      left: 100%;
+    }
   }`;
 
-export default VisitSiteButton;
+export default VisitButton;
