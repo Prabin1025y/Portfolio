@@ -3,7 +3,7 @@ import AboutBg from '../components/AboutBg'
 
 const AboutMePage = () => {
     return (
-        <div className='AboutBG bg-[#DCF2F1]  dark:bg-[#153448] w-screen h-screen -translate-y-[125px] relative font-[Inter]'>
+        <div className='AboutBG bg-[#DCF2F1]  dark:bg-[#153448] w-screen min-h-screen h-fit -translate-y-[125px] relative font-[Inter]'>
             <AboutBg />
             <h2 className='text-3xl font-bold text-center py-10 tracking-widest'>ABOUT ME</h2>
             <div className='px-72 leading-7 text-2xl text-justify tracking-widest flex flex-col gap-8'>

@@ -6,7 +6,7 @@ import VisitSiteButton from './uiverse/VisitSiteButton';
 
 const ProjectCard = () => {
     return (
-        <div className='flex px-4 py-4 gap-4 bg-[#153448] rounded-2xl fotn-[Inter] cursor-pointer group hover:-translate-x-3 hover:-translate-y-3 transition-all duration-300 hover:shadow-[19px_17px_27px_-5px_#153448]'>
+        <div className='flex px-4 py-4 gap-4 bg-[#3AA6A6] border-[#153448] dark:bg-[#153448] rounded-2xl fotn-[Inter] cursor-pointer group hover:-translate-x-3 hover:-translate-y-3 transition-all duration-300 hover:shadow-[19px_17px_27px_-5px_#153448]'>
             <div className='px-4 grid place-items-center text-3xl font-[Roboto] font-bold'>1</div>
             <Image className='rounded-xl border border-white group-hover:-translate-x-5 group-hover:-translate-y-5 group-hover:shadow-[19px_17px_27px_-5px_rgba(0,_0,_0,_0.7)] transition-all duration-300 ' src="/1.jpg" width={300} height={150} alt='picture' />
             <div className='flex flex-col justify-between py-2'>
