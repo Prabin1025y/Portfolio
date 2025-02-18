@@ -16,6 +16,13 @@ const VisitButton = () => {
 }
 
 const StyledWrapper = styled.div`
+
+  @media (max-width: 800px) {
+    .button{
+    font-size: 10px;
+    }
+  }
+
   .button {
     position: relative;
     transition: all 0.3s ease-in-out;

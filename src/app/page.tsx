@@ -3,6 +3,7 @@ import ProjectsPage from "./_Pages/ProjectsPage";
 import AboutMePage from "./_Pages/AboutMePage";
 import { CarouselSpacing } from "./_Pages/TestimonialsPage";
 import ContactPage from "./_Pages/ContactPage";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <AboutMePage />
       <CarouselSpacing />
       <ContactPage />
+      <Footer />
     </main>
   );
 }

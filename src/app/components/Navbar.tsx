@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import DarkModeSwitch from './DarkModeSwitch'
 import { Menu } from 'lucide-react'
+import Link from 'next/link';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,12 +25,12 @@ const Navbar = () => {
       <ul className='flex gap-5 sm:gap-10 font-[Inter] tracking-widest text-sm items-center'>
         {/* <li className='cursor-pointer transition duration-300'>switch</li> */}
         <li><DarkModeSwitch /></li>
-        <li className='hidden lg:block cursor-pointer font-semibold  transition hover:text-[#376c85] dark:hover:text-[var(--extra-blue)]'>HOME</li>
-        <li className='hidden lg:block cursor-pointer font-semibold  transition hover:text-[#376c85] dark:hover:text-[var(--extra-blue)]'>PROJECTS</li>
-        <li className='hidden lg:block cursor-pointer font-semibold  transition hover:text-[#376c85] dark:hover:text-[var(--extra-blue)]'>BLOG</li>
-        <li className='hidden lg:block cursor-pointer font-semibold  transition hover:text-[#376c85] dark:hover:text-[var(--extra-blue)]'>ABOUT</li>
-        <li className='hidden lg:block cursor-pointer font-semibold  transition hover:text-[#376c85] dark:hover:text-[var(--extra-blue)]'>CONTACT</li>
-        <li className='lg:hidden'><Menu /></li>
+        <Link href="#Home" className='hidden lg:block cursor-pointer font-semibold  transition hover:text-[#376c85] dark:hover:text-[var(--extra-blue)]'>HOME</Link>
+        <Link href="#Projects" className='hidden lg:block cursor-pointer font-semibold  transition hover:text-[#376c85] dark:hover:text-[var(--extra-blue)]'>PROJECTS</Link>
+        <Link href="#Home" className='hidden lg:block cursor-pointer font-semibold  transition hover:text-[#376c85] dark:hover:text-[var(--extra-blue)]'>BLOG</Link>
+        <Link href="#About" className='hidden lg:block cursor-pointer font-semibold  transition hover:text-[#376c85] dark:hover:text-[var(--extra-blue)]'>ABOUT</Link>
+        <Link href="#Contact" className='hidden lg:block cursor-pointer font-semibold  transition hover:text-[#376c85] dark:hover:text-[var(--extra-blue)]'>CONTACT</Link>
+        <Link href="#Home" className='lg:hidden'><Menu /></Link>
       </ul>
     </nav>
   )
