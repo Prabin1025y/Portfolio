@@ -1,14 +1,17 @@
 import React from 'react'
 import AboutBg from '../components/AboutBg'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import SkillsSection from '../components/SkillSection'
+import EducationCards from '../components/Education'
 
 const AboutMePage = () => {
     return (
-        <div id='AboutMe' className='AboutBG bg-[#DCF2F1]  dark:bg-[#153448] w-screen min-h-screen h-fit -translate-y-[125px] relative font-[Inter]'>
+        <div id='AboutMe' className='AboutBG bg-[#DCF2F1]  dark:bg-[#153448] w-screen min-h-screen pb-20 -translate-y-[125px] relative font-[Inter]'>
             <AboutBg />
-            <h2 className='text-3xl font-bold text-center py-10 tracking-widest'>ABOUT ME</h2>
-            <div className='w-full bg-red-500 h-full px-[15vw]'>
-                
+            {/* <h2 className='text-3xl font-bold text-center py-10 tracking-widest'>ABOUT ME</h2> */}
+            <div className='w-full  h-full px-[15vw]'>
+                <SkillsSection />
+                <EducationCards />
             </div>
             {/* <Tabs defaultValue="account" className="w-[400px]">
                 <TabsList className="grid w-full grid-cols-2">

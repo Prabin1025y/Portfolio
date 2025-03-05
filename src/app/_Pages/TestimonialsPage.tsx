@@ -12,7 +12,10 @@ import Image from "next/image"
 
 export function CarouselSpacing() {
   return (
-    <div className="w-screen flex justify-center bg-[#3AA6A6] dark:bg-[#0E1A21] -translate-y-[125px]">
+    <div className="w-screen flex flex-col items-center justify-center bg-[#3AA6A6] dark:bg-[#0E1A21] -translate-y-[125px]">
+      <div className=" text-center">
+        <h2 className="text-3xl font-bold text-center py-6 tracking">TESTIMONIALS</h2>
+      </div>
       <Carousel className="w-[85%]">
         <CarouselContent className="-ml-1 gap-4">
           {Array.from({ length: 5 }).map((_, index) => (
