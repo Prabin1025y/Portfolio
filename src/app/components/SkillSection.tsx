@@ -176,7 +176,7 @@ export default function SkillsSection() {
                     </div>
                     <span>{getCategoryLabel(category as SkillCategory)}</span>
                   </h3>
-                  <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-2">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                     {skills
                       .filter((skill) => skill.category === category)
                       .map((skill: Skill) => (
@@ -212,11 +212,11 @@ interface SkillInCategoryProps {
           scale: 1.05,
           transition: { duration: 0.2 },
         }}
-        className={`relative flex flex-col items-center justify-center gap-3 p-2 bg-[#aee0dd] dark:bg-[#153448]  rounded-md shadow-sm transition-all aspect-square`}
+        className={`relative flex md:flex-col items-center justify-start md:justify-center gap-3 p-2 bg-[#aee0dd] dark:bg-[#153448]  rounded-md shadow-sm transition-all md:aspect-square`}
       >
-        <div className={`absolute top-0 left-0 w-full h-1 ${levelColor}`}></div>
-        <img src={skill.logo || "/placeholder.svg"} alt={`${skill.name} logo`} className="w-10 h-10 " />
-        <span className="text-xs font-medium text-center">{skill.name}</span>
+        <div className={`absolute top-[5%] rounded-md left-0 h-[90%] w-1 md:w-full md:h-1 ${levelColor}`}></div>
+        <img src={skill.logo || "/placeholder.svg"} alt={`${skill.name} logo`} className="size-5 md:size-10 " />
+        <span className="text-xs md:text-xs font-medium text-center">{skill.name}</span>
       </motion.div>
     )
   }

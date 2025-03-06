@@ -4,7 +4,7 @@ import ResumeButton from './ResumeButton'
 
 const HomePage = () => {
     return (
-        <div id='Home' className='flex flex-col-reverse gap-10 lg:gap-5 xl:gap-0 xl:flex-row h-[calc(100vh-80px)] items-center justify-end pt-14 sm:pt-0 sm:justify-center font-[Inter]'>
+        <div id='Home' className='flex flex-col-reverse gap-10 lg:gap-5 xl:gap-0 xl:flex-row h-fit sm:h-[calc(100vh-80px)] items-center justify-end pt-14  sm:justify-center font-[Inter]'>
             <div className=' max-w-[650px]'>
                 <div className='lg:ml-10 flex gap-2 items-center justify-center lg:justify-start'>
                     <p className='text-[2rem] sm:text-[3rem] lg:text-[3.8rem] text-[#0F1035] dark:text-white transition-colors tracking-[10px] font-bold leading-tight'>PRABIN</p>
