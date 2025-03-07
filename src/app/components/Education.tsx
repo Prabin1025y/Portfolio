@@ -48,7 +48,7 @@ export default function EducationCards({ educationData = sampleEducationData }: 
     const sortedEducationData = [...educationData].sort((a, b) => b.startYear - a.startYear)
 
     return (
-        <div className="border rounded-lg shadow-sm w-full my-10">
+        <div className="rounded-lg w-full my-10">
             <div className="mb-4 text-center">
                 <h2 className="text-3xl font-bold text-center py-6 tracking">EDUCATION</h2>
             </div>
@@ -56,7 +56,7 @@ export default function EducationCards({ educationData = sampleEducationData }: 
                 {sortedEducationData.map((education) => (
                     <Card
                         key={education.id}
-                        className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-primary/20 "
+                        className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-primary/20  bg-[#3AA6A6] dark:bg-[#255676]"
                     >
                         <div className="h-2 bg-primary" />
                         <CardHeader className="pb-2 bg-[#3AA6A6] dark:bg-[#255676]">

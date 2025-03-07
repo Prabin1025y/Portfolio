@@ -1,6 +1,6 @@
 import React from 'react'
 import PhotoHolder from './PhotoHolder'
-import ResumeButton from './ResumeButton'
+import { Download } from 'lucide-react'
 
 const HomePage = () => {
     return (
@@ -20,8 +20,11 @@ const HomePage = () => {
                     </div>
                     <p className='text-[2rem] sm:text-[3rem] lg:text-[3.8rem] tracking-[10px] text-[#0F1035] dark:text-white transition-colors font-bold leading-tight'>ACHARYA</p>
                 </div>
-                <div className='mt-5 sm:mt-0 tracking-wide sm:tracking-widest text-sm md:text-base px-4 sm:px-0 sm:font-semibold text-center text-[#0F1035] dark:text-white duration-300'>A Web Development enthusiast with silly hobby of creating game on the way. Always ready for some fun :)</div>
-                <ResumeButton />
+                <div className='mt-5 sm:mt-0 tracking-wide sm:tracking-widest text-sm md:text-base px-4 sm:px-0 sm:font-semibold text-center text-[#0F1035] dark:text-white duration-300'>Web dev enthusiast who codes for fun and fun for code—always up for a challenge :)</div>
+                <div className='flex items-center justify-center gap-5 my-4 px-4 py-2'>
+                    <a href='#Contact' className='flex gap-2 items-center rounded-full bg-cyan-500 text-sm px-4 py-3 hover:scale-105 transition-all duration-300'>Contact Me</a>
+                    <a href="/files/PrabinAcharyaCV.pdf" download="PrabinAcharyaCV.pdf"><button className='flex gap-2 items-center rounded-full border border-slate-300 bg-cyan-900/70 text-sm px-4 py-3 hover:scale-105 transition-all duration-300'><Download className='size-4'/> Download CV</button></a>
+                </div>
             </div>
             <PhotoHolder />
         </div>
