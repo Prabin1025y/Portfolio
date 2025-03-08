@@ -1,4 +1,4 @@
-import { Code2, Database, Layout, Palette, Layers, BrainCircuit, Server, Code, MonitorCog, LibraryBig, DatabaseBackup, DatabaseIcon, Wrench } from "lucide-react"
+import { Code2, Palette, Code, MonitorCog, LibraryBig, DatabaseIcon, Wrench } from "lucide-react"
 
 
 interface Project {
@@ -27,7 +27,7 @@ export const projects: Project[] = [
         title: "GuffGaff",
         description:
             "A real-time chat application built using the MERN stack. It supports real-time messaging, user authentication, active status and has a pleasing simple user interface.",
-        techStack: ["React", "Node.js", "Express.js", "TailwindCSS", "Socket.io","MongoDB","Mongoose"],
+        techStack: ["React", "Node.js", "Express.js", "TailwindCSS", "Socket.io", "MongoDB", "Mongoose"],
         imageUrl: "/ProjectsImage/guffgaff.png",
         websiteUrl: "https://guffgaff-kpsd.onrender.com",
         repositoryUrl: "https://github.com/Prabin1025y/GuffGaff",
@@ -159,7 +159,7 @@ export const skills: Skill[] = [
     { name: "Python", level: "intermediate", category: "languages", logo: "/SkillIcons/python.svg" },
     { name: "C", level: "beginner", category: "languages", logo: "/SkillIcons/c.svg" },
     { name: "C++", level: "intermediate", category: "languages", logo: "/SkillIcons/cpp.svg" },
-    
+
     // Technologies
     { name: "React", level: "intermediate", category: "technologies", logo: "/SkillIcons/react.svg" },
     { name: "HTML", level: "advanced", category: "technologies", logo: "/SkillIcons/html.svg" },
@@ -176,11 +176,11 @@ export const skills: Skill[] = [
     { name: "JWT", level: "beginner", category: "libraries", logo: "/SkillIcons/jwt.svg" },
 
     //Tools
-    
+
     //Design
     { name: "Figma", level: "intermediate", category: "designing", logo: "/SkillIcons/figma.svg" },
     { name: "Photoshop", level: "intermediate", category: "designing", logo: "/SkillIcons/photoshop.svg" },
-    
+
     // Database
     { name: "MongoDB", level: "intermediate", category: "database", logo: "/SkillIcons/mongodb.svg" },
     { name: "Mongoose", level: "intermediate", category: "database", logo: "/SkillIcons/mongoose.svg" },

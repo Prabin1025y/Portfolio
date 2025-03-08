@@ -106,13 +106,6 @@ export default function SkillsSection() {
   )
 }
 
-interface SkillCardProps {
-  skill: Skill
-  levelColor: string
-  categoryIcon: React.ReactNode
-  categoryLabel: string
-}
-
 
 interface SkillInCategoryProps {
     skill: Skill

@@ -1,7 +1,7 @@
 'use client';
 import { Moon, SunDim } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import UseMounted from '../hooks/UseMounted';
 
 const DarkModeSwitch = () => {
@@ -11,7 +11,7 @@ const DarkModeSwitch = () => {
 
   useEffect(() => {
     setTheme(dark? 'dark':'light')
-  }, [dark])
+  }, [dark, setTheme])
 
   if(!isMounted)
     return null;

@@ -1,8 +1,7 @@
 'use client';
 import { useTheme } from 'next-themes'
-import React, { useEffect } from 'react'
+import React from 'react'
 import UseMounted from '../hooks/UseMounted';
-import Image from 'next/image';
 
 const AboutBg = () => {
   const { theme } = useTheme();

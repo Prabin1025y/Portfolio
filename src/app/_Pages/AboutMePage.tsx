@@ -1,6 +1,5 @@
 import React from 'react'
 import AboutBg from '../components/AboutBg'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import SkillsSection from '../components/SkillSection'
 import EducationCards from '../components/Education'
 
