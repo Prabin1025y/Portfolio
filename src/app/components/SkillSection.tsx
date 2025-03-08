@@ -118,6 +118,8 @@ interface SkillInCategoryProps {
     skill: Skill
     levelColor: string
   }
+
+  const darkImageSkills = ["ShadCN","NextJS","Socket.io", "Express.js","Bcrypt.js"];
   
   function SquareSkillInCategory({ skill, levelColor }: SkillInCategoryProps) {
     return (
@@ -129,7 +131,7 @@ interface SkillInCategoryProps {
         className={`relative flex md:flex-col items-center justify-start md:justify-center gap-3 p-2 bg-[#aee0dd] dark:bg-[#153448]  rounded-md shadow-sm transition-all md:aspect-square`}
       >
         <div className={`absolute top-[5%] rounded-md left-0 h-[90%] w-1 md:w-full md:h-1 ${levelColor}`}></div>
-        <img src={skill.logo || "/placeholder.svg"} alt={`${skill.name} logo`} className="size-5 md:size-10 " />
+        <img src={skill.logo || "/placeholder.svg"} alt={`${skill.name} logo`} className={`size-5 md:size-10 ${darkImageSkills.includes(skill.name) && "dark:invert" }`} />
         <span className="text-xs md:text-xs font-medium text-center">{skill.name}</span>
       </motion.div>
     )

@@ -13,7 +13,6 @@ interface Project {
 
 export type SkillLevel = "beginner" | "intermediate" | "advanced"
 export type SkillCategory = "languages" | "technologies" | "libraries" | "tools" | "database" | "designing"
-// export type SkillCategory = "frontend" | "backend" | "database" | "state-management" | "design" | "framework"
 
 export interface Skill {
     name: string
@@ -25,59 +24,50 @@ export interface Skill {
 export const projects: Project[] = [
     {
         id: "1",
-        title: "E-commerce Platform",
+        title: "GuffGaff",
         description:
-            "A full-featured online store with product listings, cart functionality, and secure checkout process.",
-        techStack: ["React", "Next.js", "Tailwind CSS", "Stripe", "MongoDB"],
-        imageUrl: "/1.jpg",
-        websiteUrl: "https://example.com/project1",
-        repositoryUrl: "https://github.com/yourusername/project1",
+            "A real-time chat application built using the MERN stack. It supports real-time messaging, user authentication, active status and has a pleasing simple user interface.",
+        techStack: ["React", "Node.js", "Express.js", "TailwindCSS", "Socket.io","MongoDB","Mongoose"],
+        imageUrl: "/ProjectsImage/guffgaff.png",
+        websiteUrl: "https://guffgaff-kpsd.onrender.com",
+        repositoryUrl: "https://github.com/Prabin1025y/GuffGaff",
     },
     {
         id: "2",
-        title: "Task Management App",
-        description: "A productivity application that helps users organize tasks, set deadlines, and track progress.",
-        techStack: ["TypeScript", "React", "Redux", "Firebase", "Material UI"],
-        imageUrl: "/1.jpg",
-        websiteUrl: "https://example.com/project2",
-        repositoryUrl: "https://github.com/yourusername/project2",
+        title: "Raag",
+        description: "A beautifully designed music player with an admin panel for managing songs, albums, and users—featuring personalized recommendations and advanced state management.",
+        techStack: ["TypeScript", "React", "Node.js", "MongoDB", "ShadCN", "TailwindCSS"],
+        imageUrl: "/ProjectsImage/raag.png",
+        websiteUrl: "https://raag.onrender.com",
+        repositoryUrl: "https://github.com/Prabin1025y/Raag",
     },
     {
         id: "3",
-        title: "Weather Dashboard",
-        description: "Real-time weather information with interactive maps, forecasts, and location-based services.",
-        techStack: ["JavaScript", "React", "Chart.js", "OpenWeather API", "Leaflet"],
-        imageUrl: "/1.jpg",
-        websiteUrl: "https://example.com/project3",
-        repositoryUrl: "https://github.com/yourusername/project3",
+        title: "StoreHub",
+        description: "A sleek e-commerce app with cart functionality, secure authentication, and responsive design—built with MongoDB, React hooks, and JWT.",
+        techStack: ["React", "Node.js", "MongoDB", "TailwindCSS"],
+        imageUrl: "/ProjectsImage/storehub.png",
+        websiteUrl: "#Projects",
+        repositoryUrl: "https://github.com/Prabin1025y/StoreHub",
     },
     {
         id: "4",
-        title: "E-commerce Platform",
+        title: "Better Together",
         description:
-            "A full-featured online store with product listings, cart functionality, and secure checkout process.",
-        techStack: ["React", "Next.js", "Tailwind CSS", "Stripe", "MongoDB"],
-        imageUrl: "/1.jpg",
-        websiteUrl: "https://example.com/project1",
-        repositoryUrl: "https://github.com/yourusername/project1",
+            "Two player level based, platformer, pixel game where two players have to work together to complete the levels",
+        techStack: ["C++", "SFML"],
+        imageUrl: "/ProjectsImage/bettertogether.png",
+        websiteUrl: "#Projects",
+        repositoryUrl: "https://github.com/Prabin1025y/Better-Together",
     },
     {
         id: "5",
-        title: "Task Management App",
-        description: "A productivity application that helps users organize tasks, set deadlines, and track progress.",
-        techStack: ["TypeScript", "React", "Redux", "Firebase", "Material UI"],
-        imageUrl: "/1.jpg",
-        websiteUrl: "https://example.com/project2",
-        repositoryUrl: "https://github.com/yourusername/project2",
-    },
-    {
-        id: "6",
-        title: "Weather Dashboard",
-        description: "Real-time weather information with interactive maps, forecasts, and location-based services.",
-        techStack: ["JavaScript", "React", "Chart.js", "OpenWeather API", "Leaflet"],
-        imageUrl: "/1.jpg",
-        websiteUrl: "https://example.com/project3",
-        repositoryUrl: "https://github.com/yourusername/project3",
+        title: "LightCode",
+        description: "An online code editor supporting multiple programming languages and customizable themes—offering a smooth coding experience.",
+        techStack: ["TypeScript", "NextJs", "Zustand", "Convex", "ShadCN"],
+        imageUrl: "/ProjectsImage/lightcode.png",
+        websiteUrl: "#Projects",
+        repositoryUrl: "https://github.com/Prabin1025y/LightCode",
     },
 ]
 
@@ -166,9 +156,9 @@ export const skills: Skill[] = [
     // Languages
     { name: "JavaScript", level: "intermediate", category: "languages", logo: "/SkillIcons/js.svg" },
     { name: "TypeScript", level: "intermediate", category: "languages", logo: "/SkillIcons/ts.svg" },
-    { name: "Python", level: "intermediate", category: "languages", logo: "/SkillIcons/ts.svg" },
-    { name: "C", level: "beginner", category: "languages", logo: "/SkillIcons/ts.svg" },
-    { name: "C++", level: "intermediate", category: "languages", logo: "/SkillIcons/ts.svg" },
+    { name: "Python", level: "intermediate", category: "languages", logo: "/SkillIcons/python.svg" },
+    { name: "C", level: "beginner", category: "languages", logo: "/SkillIcons/c.svg" },
+    { name: "C++", level: "intermediate", category: "languages", logo: "/SkillIcons/cpp.svg" },
     
     // Technologies
     { name: "React", level: "intermediate", category: "technologies", logo: "/SkillIcons/react.svg" },
@@ -176,14 +166,14 @@ export const skills: Skill[] = [
     { name: "CSS", level: "intermediate", category: "technologies", logo: "/SkillIcons/css.svg" },
     { name: "Node.js", level: "intermediate", category: "technologies", logo: "/SkillIcons/nodejs.svg" },
     { name: "Express.js", level: "intermediate", category: "technologies", logo: "/SkillIcons/express.svg" },
-    { name: "Next.js", level: "intermediate", category: "technologies", logo: "/SkillIcons/nextjs.svg" },
-    { name: "ShadCN", level: "intermediate", category: "technologies", logo: "/SkillIcons/nextjs.svg" },
-    { name: "Socket.io", level: "beginner", category: "technologies", logo: "/SkillIcons/nextjs.svg" },
+    { name: "NextJS", level: "intermediate", category: "technologies", logo: "/SkillIcons/nextjs.svg" },
+    { name: "ShadCN", level: "intermediate", category: "technologies", logo: "/SkillIcons/shadcn.svg" },
+    { name: "Socket.io", level: "beginner", category: "technologies", logo: "/SkillIcons/socketio.svg" },
 
     // Libraries
     { name: "Zustand", level: "intermediate", category: "libraries", logo: "/SkillIcons/zustand.ico" },
-    { name: "bcrypt.js", level: "beginner", category: "libraries", logo: "/SkillIcons/zustand.ico" },
-    { name: "JWT", level: "beginner", category: "libraries", logo: "/SkillIcons/zustand.ico" },
+    { name: "Bcrypt.js", level: "beginner", category: "libraries", logo: "/SkillIcons/bcrypt.png" },
+    { name: "JWT", level: "beginner", category: "libraries", logo: "/SkillIcons/jwt.svg" },
 
     //Tools
     
@@ -195,6 +185,6 @@ export const skills: Skill[] = [
     { name: "MongoDB", level: "intermediate", category: "database", logo: "/SkillIcons/mongodb.svg" },
     { name: "Mongoose", level: "intermediate", category: "database", logo: "/SkillIcons/mongoose.svg" },
     { name: "PostgreSQL", level: "intermediate", category: "database", logo: "/SkillIcons/postgress.svg" },
-    { name: "Convex", level: "beginner", category: "database", logo: "/SkillIcons/postgress.svg" },
+    { name: "Convex", level: "beginner", category: "database", logo: "/SkillIcons/convex.ico" },
 
 ]

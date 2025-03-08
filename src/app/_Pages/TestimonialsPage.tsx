@@ -39,7 +39,7 @@ export function CarouselSpacing() {
                   Prabin Acharya
                   <div>stars</div>
                 </div>
-                <div className="text-xs sm:text-sm">something good about me i guess. He is a very handsome and funny guy who wants to have fun and play chess maybe. I dont know him very well. just making these up as testimonials are supposed to be good.</div>
+                <div className="text-xs sm:text-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam asperiores commodi, qui ab temporibus officia illum voluptas eveniet earum nemo!</div>
               </div>
             </CarouselItem>
           ))}

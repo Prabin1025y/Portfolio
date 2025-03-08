@@ -14,10 +14,10 @@ const ContactPage = () => {
                     {/* <Image className='' src="/social-media.svg" alt='Illustration' aria-hidden width={400} height={400} /> */}
                     <ContactIllustration/>
                     <ul className='flex justify-between w-full mt-5 gap-4'>
-                        <li><Link href="#"><FaLinkedin size={30} className='cursor-pointer' /></Link></li>
-                        <li><Link href="#"><FaFacebook size={30} className='cursor-pointer' /></Link></li>
-                        <li><Link href="#"><FaGithub size={30} className='cursor-pointer' /></Link></li>
-                        <li><Link href="#"><FaInstagram size={30} className='cursor-pointer' /></Link></li>
+                        <li><Link target='_blank' href="https://www.linkedin.com/in/prabin-acharya-9345b32b5/"><FaLinkedin size={30} className='cursor-pointer' /></Link></li>
+                        <li><Link target='_blank' href="https://www.facebook.com/prabin.acharya.1025"><FaFacebook size={30} className='cursor-pointer' /></Link></li>
+                        <li><Link target='_blank' href="https://github.com/Prabin1025y/"><FaGithub size={30} className='cursor-pointer' /></Link></li>
+                        <li><Link target='_blank' href="https://www.instagram.com/prabin_acharya__/"><FaInstagram size={30} className='cursor-pointer' /></Link></li>
                     </ul>
                 </div>
                 <form className='w-full md:w-2/3 flex flex-col justify-center px-3 sm:px-10 lg:px-0 py-10  gap-5'>
@@ -30,10 +30,10 @@ const ContactPage = () => {
                     <textarea className='w-full rounded-md block border border-slate-500 bg-[#226b6b] dark:bg-[#1A252B] focus:outline p-4' placeholder='Type your message here.' name="message" id="message" rows={10} required></textarea>
                     <button type='submit' className='w-48 h-10 rounded-md flex items-center justify-center bg-[#F5A800] text-black font-semibold hover:scale-105 transition-all duration-300'>Submit</button>
                     <ul className='md:hidden flex justify-between w-full mt-5 gap-4'>
-                        <li><Link href="#"><FaLinkedin size={30} className='cursor-pointer' /></Link></li>
-                        <li><Link href="#"><FaFacebook size={30} className='cursor-pointer' /></Link></li>
-                        <li><Link href="#"><FaGithub size={30} className='cursor-pointer' /></Link></li>
-                        <li><Link href="#"><FaInstagram size={30} className='cursor-pointer' /></Link></li>
+                        <li><Link target='_blank' href="https://www.linkedin.com/in/prabin-acharya-9345b32b5/"><FaLinkedin size={30} className='cursor-pointer' /></Link></li>
+                        <li><Link target='_blank' href="https://www.facebook.com/prabin.acharya.1025"><FaFacebook size={30} className='cursor-pointer' /></Link></li>
+                        <li><Link target='_blank' href="https://github.com/Prabin1025y/"><FaGithub size={30} className='cursor-pointer' /></Link></li>
+                        <li><Link target='_blank' href="https://www.instagram.com/prabin_acharya__/"><FaInstagram size={30} className='cursor-pointer' /></Link></li>
                     </ul>
                 </form>
             </div>
