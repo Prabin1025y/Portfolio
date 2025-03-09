@@ -57,7 +57,7 @@ export const projects: Project[] = [
             "Two player level based, platformer, pixel game where two players have to work together to complete the levels",
         techStack: ["C++", "SFML"],
         imageUrl: "/ProjectsImage/bettertogether.png",
-        websiteUrl: "#Projects",
+        websiteUrl: "https://prabinacharya.itch.io/better-together",
         repositoryUrl: "https://github.com/Prabin1025y/Better-Together",
     },
     {

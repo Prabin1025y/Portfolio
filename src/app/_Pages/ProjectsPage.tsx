@@ -49,7 +49,7 @@ export default function ProjectPage() {
                       <Button asChild className="flex-1 transition-transform duration-300 group-hover:translate-y-[-2px]">
                         <Link href={project.websiteUrl} target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="mr-2 h-4 w-4" />
-                          Visit Site
+                          {project.title === "Better Together" ? "Download Link" : "Visit Site"}
                         </Link>
                       </Button>
                       <Button

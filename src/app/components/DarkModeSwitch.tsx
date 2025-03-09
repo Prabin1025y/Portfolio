@@ -17,7 +17,7 @@ const DarkModeSwitch = () => {
     return null;
   
   return (
-    <div onClick={() => setTheme(dark ? 'light' : 'dark')} className='w-12 h-6 px-[2px] flex items-center justify-between relative border transition-all duration-300 border-[#0E1A21] dark:border-white rounded-full overflow-hidden'>
+    <div onClick={() => setTheme(dark ? 'light' : 'dark')} className='w-12 h-6 px-[2px] cursor-pointer flex items-center justify-between relative border transition-all duration-300 border-[#0E1A21] dark:border-white rounded-full overflow-hidden'>
       <div className={`w-5 h-5 transition-all duration-500 bg-[#0E1A21] dark:bg-white rounded-full absolute text-black left-[2px] ${dark && "translate-x-[22px]"}`}>
       </div>
       <SunDim color='white' className={`${!dark && 'translate-y-5'}  transition-all duration-500 `} size={20} />
