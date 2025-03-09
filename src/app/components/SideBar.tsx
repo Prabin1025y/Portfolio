@@ -1,3 +1,4 @@
+'use client'
 import { FolderCode, Home, Newspaper, Phone, SquareUserRound, X } from 'lucide-react'
 import Link from 'next/link';
 import React, { useState } from 'react'
