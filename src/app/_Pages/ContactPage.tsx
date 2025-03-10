@@ -5,7 +5,7 @@ import ContactIllustration from '../components/ContactIllustration';
 
 const ContactPage = () => {
     return (
-        <div id='Contact' className=' bg-[#DCF2F1]  dark:bg-[rgb(21,52,72)] w-screen  h-fit xl:-translate-y-[125px] relative font-[Inter] flex justify-center lg:justify-end px-3 sm:px-8 lg:px-16 xl:px-32 2xl:px-56 py-20'>
+        <section id='Contact' className=' bg-[#DCF2F1]  dark:bg-[rgb(21,52,72)] w-screen  h-fit xl:-translate-y-[125px] relative font-[Inter] flex justify-center lg:justify-end px-3 sm:px-8 lg:px-16 xl:px-32 2xl:px-56 py-20'>
             <div className='translate-y-[50px] w-[90%] h-[80%] bg-[#8EDBD7] dark:bg-[#255676] rounded-md relative flex justify-between lg:justify-end lg:px-20 shadow-[18px_18px_24px_-17px_rgba(0,_0,_0,_0.8)]'>
                 <div className='hidden overflow-hidden md:flex lg:min-w-[350px] min-w-[280px] w-[40%] lg:h-[80%] dark:bg-[#0E1A21] bg-[#3AA6A6] lg:absolute top-1/2 lg:-translate-y-1/2 -left-1/2 lg:translate-x-full rounded-md border shadow-[18px_18px_24px_-17px_rgba(0,_0,_0,_0.8)] p-10 flex-col items-center justify-center'>
                     <h2 className='text-3xl font-semibold place-self-start'>CONTACT ME</h2>
@@ -35,7 +35,7 @@ const ContactPage = () => {
                     </ul>
                 </form>
             </div>
-        </div>
+        </section>
     )
 }
 

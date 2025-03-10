@@ -12,11 +12,11 @@ export default function ProjectPage() {
   // Sample projects data - replace with your actual projects
 
   return (
-        <div id='Projects' className='projectBG bg-[#8EDBD7]  dark:bg-[#255676] w-screen h-fit pt-32 sm:pt-60 px-8 pb-10 md:px-16 lg:px-32 xl:px-56 2xl:px-72  flex flex-col gap-5'>
+        <section id='Projects' className='projectBG bg-[#8EDBD7]  dark:bg-[#255676] w-screen h-fit pt-32 sm:pt-60 px-2 sm:px-8 pb-10 md:px-16 lg:px-32 xl:px-56 2xl:px-72  flex flex-col gap-5'>
           <div className=" text-center">
             <h2 className="text-3xl font-bold text-center tracking">PROJECTS</h2>
           </div>
-          <section className="py-12 px-4 md:px-6 lg:px-8 ">
+          <div className="py-12 px-4 md:px-6 lg:px-8 ">
             <div className="container mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6">
                 {projects.map((project) => (
@@ -67,8 +67,8 @@ export default function ProjectPage() {
                 ))}
               </div>
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
   )
 }
 

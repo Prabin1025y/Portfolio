@@ -1,5 +1,6 @@
 import type React from "react"
 import { getCategoryIcon, getCategoryLabel, getLevelColor, Skill, SkillCategory, skills } from "@/utils/Utilities"
+import Image from "next/image"
 
 export default function SkillsSection() {
 
@@ -26,8 +27,8 @@ export default function SkillsSection() {
           </div>
         </div>
       </div>
-      
-      <div 
+
+      <div
         key="category-view"
         className="animate-fade-in"
       >
@@ -52,10 +53,10 @@ export default function SkillsSection() {
                   {skills
                     .filter((skill) => skill.category === category)
                     .map((skill: Skill, skillIndex) => (
-                      <SquareSkillInCategory 
-                        key={skill.name} 
-                        skill={skill} 
-                        levelColor={getLevelColor(skill.level)} 
+                      <SquareSkillInCategory
+                        key={skill.name}
+                        skill={skill}
+                        levelColor={getLevelColor(skill.level)}
                         index={skillIndex}
                       />
                     ))}
@@ -75,7 +76,7 @@ interface SkillInCategoryProps {
   index?: number
 }
 
-const darkImageSkills = ["ShadCN","NextJS","Socket.io", "Express.js","Bcrypt.js"];
+const darkImageSkills = ["ShadCN", "NextJS", "Socket.io", "Express.js", "Bcrypt.js"];
 
 function SquareSkillInCategory({ skill, levelColor, index = 0 }: SkillInCategoryProps) {
   return (
@@ -84,7 +85,14 @@ function SquareSkillInCategory({ skill, levelColor, index = 0 }: SkillInCategory
       style={{ animationDelay: `${index * 50}ms`, transitionDuration: '0.2s' }}
     >
       <div className={`absolute top-[5%] rounded-md left-0 h-[90%] w-1 md:w-full md:h-1 ${levelColor}`}></div>
-      <img src={skill.logo || "/placeholder.svg"} alt={`${skill.name} logo`} className={`size-5 md:size-10 ${darkImageSkills.includes(skill.name) && "dark:invert" }`} />
+      {/* <img src={skill.logo || "/placeholder.svg"} alt={`${skill.name} logo`} className={`size-5 md:size-10 ${darkImageSkills.includes(skill.name) && "dark:invert" }`} /> */}
+      <Image
+        src={skill.logo || "/placeholder.svg"}
+        alt={`${skill.name} logo`}
+        width={40}
+        height={40}
+        className={`size-5 md:size-10 ${darkImageSkills.includes(skill.name) && "dark:invert"}`}
+      />
       <span className="text-xs md:text-xs font-medium text-center">{skill.name}</span>
     </div>
   )
