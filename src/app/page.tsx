@@ -59,7 +59,7 @@ export const metadata: Metadata =  {
     "site": "@yourTwitterHandle",
     "images": [
       {
-        "url": "https://yourportfolio.com/Images/Portfolio-Thumbnail.png",
+        "url": "https://prabinacharya1.com.np/Images/Portfolio-Thumbnail.png",
         "width": 1200,
         "height": 630,
         "alt": "Portfolio of Prabin Acharya"
