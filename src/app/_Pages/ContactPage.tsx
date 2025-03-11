@@ -1,23 +1,36 @@
 import { FaLinkedin, FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
 import React from 'react'
 import Link from 'next/link';
-import ContactIllustration from '../components/ContactIllustration';
+import { Facebook, Github, Instagram, Linkedin } from "lucide-react";
+import { contactInfo } from "@/utils/Utilities";
 
 const ContactPage = () => {
     return (
         <section id='Contact' className=' bg-[#DCF2F1]  dark:bg-[rgb(21,52,72)] w-screen  h-fit xl:-translate-y-[125px] relative font-[Inter] flex justify-center lg:justify-end px-3 sm:px-8 lg:px-16 xl:px-32 2xl:px-56 py-20'>
-            <div className='translate-y-[50px] w-[90%] h-[80%] bg-[#8EDBD7] dark:bg-[#255676] rounded-md relative flex justify-between lg:justify-end lg:px-20 shadow-[18px_18px_24px_-17px_rgba(0,_0,_0,_0.8)]'>
-                <div className='hidden overflow-hidden md:flex lg:min-w-[350px] min-w-[280px] w-[40%] lg:h-[80%] dark:bg-[#0E1A21] bg-[#3AA6A6] lg:absolute top-1/2 lg:-translate-y-1/2 -left-1/2 lg:translate-x-full rounded-md border shadow-[18px_18px_24px_-17px_rgba(0,_0,_0,_0.8)] p-10 flex-col items-center justify-center'>
+            <div className='translate-y-[50px] w-[90%] h-[80%] bg-[#8EDBD7] dark:bg-[#255676] rounded-md relative flex-col md:flex-row flex justify-between lg:justify-end lg:px-20 shadow-[18px_18px_24px_-17px_rgba(0,_0,_0,_0.8)]'>
+                <div className='overflow-hidden flex lg:min-w-[350px] min-w-[280px] w-full md:w-[40%] lg:h-[80%] dark:bg-[#0E1A21] bg-[#3AA6A6] lg:absolute top-1/2 lg:-translate-y-1/2 -left-1/2 lg:translate-x-full rounded-md border md:shadow-[18px_18px_24px_-17px_rgba(0,_0,_0,_0.8)] px-4 lg:px-10 py-10 flex-col items-center justify-center'>
                     <h2 className='text-3xl font-semibold place-self-start'>CONTACT ME</h2>
-                    {/* <Image className='' src="/social-media.svg" alt='Illustration' aria-hidden width={400} height={400} /> */}
-                    <ContactIllustration/>
-                    <ul className='flex justify-between w-full mt-5 gap-4'>
-                        <li><Link target='_blank' href="https://www.linkedin.com/in/prabin-acharya-9345b32b5/"><FaLinkedin size={30} className='cursor-pointer' /></Link></li>
-                        <li><Link target='_blank' href="https://www.facebook.com/prabin.acharya.1025"><FaFacebook size={30} className='cursor-pointer' /></Link></li>
-                        <li><Link target='_blank' href="https://github.com/Prabin1025y/"><FaGithub size={30} className='cursor-pointer' /></Link></li>
-                        <li><Link target='_blank' href="https://www.instagram.com/prabin_acharya__/"><FaInstagram size={30} className='cursor-pointer' /></Link></li>
+                    {/* <ContactIllustration/> */}
+                    <div className="h-full w-full p-4 flex flex-col gap-5">
+                        {contactInfo.map((info, index) => (
+                            <div key={index} className="flex gap-4 items-center">
+                                <div className="grid place-items-center h-12 aspect-square bg-white/30 dark:bg-cyan-500/30 rounded-lg dark:text-cyan-500"><info.icon /></div>
+                                <div className="flex flex-col">
+                                    <p className="text-sm text-cyan-900 dark:text-gray-400">{info.label}</p>
+                                    <p className="cursor-pointer transition-colors dark:hover:text-cyan-400 hover:text-emerald-900 text-wrap"><Link href={info.href}>{info.value}</Link></p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <h3 className="font-[Inter]">Follow Me</h3>
+                    <ul className='flex w-full mt-1 gap-4 justify-center'>
+                        <li className="border bg-primary/10 border-primary/25 hover:scale-105 transition-all duration-300 hover:bg-white/20 dark:hover:bg-cyan-500/30 rounded-full p-2"><Link target='_blank' href="https://www.linkedin.com/in/prabin-acharya-9345b32b5/"><Linkedin /></Link></li>
+                        <li className="border bg-primary/10 border-primary/25 hover:scale-105 transition-all duration-300 hover:bg-white/20 dark:hover:bg-cyan-500/30 rounded-full p-2"><Link target='_blank' href="https://www.facebook.com/prabin.acharya.1025"><Facebook /></Link></li>
+                        <li className="border bg-primary/10 border-primary/25 hover:scale-105 transition-all duration-300 hover:bg-white/20 dark:hover:bg-cyan-500/30 rounded-full p-2"><Link target='_blank' href="https://github.com/Prabin1025y/"><Github /></Link></li>
+                        <li className="border bg-primary/10 border-primary/25 hover:scale-105 transition-all duration-300 hover:bg-white/20 dark:hover:bg-cyan-500/30 rounded-full p-2"><Link target='_blank' href="https://www.instagram.com/prabin_acharya__/"><Instagram /></Link></li>
                     </ul>
                 </div>
+
                 <form className='w-full md:w-2/3 flex flex-col justify-center px-3 sm:px-10 lg:px-0 py-10  gap-5'>
                     {/* <div className='flex gap-4'> */}
                     <h2 className='text-3xl font-semibold'>Get In Touch</h2>

@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ExternalLink, Github } from "lucide-react"
+import { CircleAlert, ExternalLink, Github } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -10,6 +10,9 @@ import { projects } from "@/utils/Utilities"
 
 export default function ProjectPage() {
   // Sample projects data - replace with your actual projects
+
+  const warningProjects = ["GuffGaff", "Raag"]
+  const unavailableProjects = ["LightCode", "StoreHub"]
 
   return (
         <section id='Projects' className='projectBG bg-[#8EDBD7]  dark:bg-[#255676] w-screen h-fit pt-32 sm:pt-60 px-2 sm:px-8 pb-10 md:px-16 lg:px-32 xl:px-56 2xl:px-72  flex flex-col gap-5'>
@@ -22,7 +25,7 @@ export default function ProjectPage() {
                 {projects.map((project) => (
                   <Card
                     key={project.id}
-                    className="overflow-hidden flex flex-col h-full transition-all duration-300 group relative hover:shadow-xl  border-none">
+                    className="bg-[#3AA6A6]  dark:bg-[#153448] overflow-hidden flex flex-col h-full transition-all duration-300 group relative hover:shadow-xl  border-none">
                     <div className="relative h-48 w-full overflow-hidden">
                       <Image
                         src={project.imageUrl || "/1.jpg"}
@@ -46,8 +49,8 @@ export default function ProjectPage() {
                       <p className="text-cyan-950 dark:text-cyan-200">{project.description}</p>
                     </CardContent>
                     <CardFooter className="flex gap-3 bg-[#3AA6A6]  dark:bg-[#153448]">
-                      <Button asChild className="flex-1 transition-transform duration-300 group-hover:translate-y-[-2px]">
-                        <Link href={project.websiteUrl} target="_blank" rel="noopener noreferrer">
+                      <Button disabled={unavailableProjects.includes(project.title)} asChild className={`flex-1 transition-transform duration-300 group-hover:translate-y-[-2px] ${unavailableProjects.includes(project.title) && "cursor-not-allowed text-gray-400"}`}>
+                        <Link href={project.websiteUrl} target={unavailableProjects.includes(project.title) ? "_self" : "_blank"} rel="noopener noreferrer">
                           <ExternalLink className="mr-2 h-4 w-4" />
                           {project.title === "Better Together" ? "Download Link" : "Visit Site"}
                         </Link>
@@ -63,7 +66,7 @@ export default function ProjectPage() {
                         </Link>
                       </Button>
                     </CardFooter>
-                  </Card>
+                    {warningProjects.includes(project.title) && <div className="pl-4 pr-2 items-center py-2 mx-6 mb-2 -mt-3 rounded-md bg-[#ff11114d] dark:bg-[#cd3b3b2a] text-[#980000] dark:text-[#ff4c4c] border dark:border-[#ff4c4c] border-[#980000] text-sm flex gap-2"><CircleAlert size={16} /> Site might take about 1 min to load the first time.</div> }                  </Card>
                 ))}
               </div>
             </div>

@@ -1,4 +1,5 @@
-import { Code2, Palette, Code, MonitorCog, LibraryBig, DatabaseIcon, Wrench } from "lucide-react"
+import { Code2, Palette, Code, MonitorCog, LibraryBig, DatabaseIcon, Wrench, Mail, Phone, MapPin } from "lucide-react"
+
 
 
 interface Project {
@@ -11,6 +12,13 @@ interface Project {
     repositoryUrl: string
 }
 
+interface ContactInfo {
+    icon: React.ComponentType
+    label: string
+    value: string
+    href: string
+}
+
 export type SkillLevel = "beginner" | "intermediate" | "advanced"
 export type SkillCategory = "languages" | "technologies" | "libraries" | "tools" | "database" | "designing"
 
@@ -19,6 +27,13 @@ export interface Skill {
     level: SkillLevel
     category: SkillCategory
     logo: string
+}
+
+interface Testimonial {
+    userName: string
+    stars: number
+    imageUrl: string
+    content: string
 }
 
 export const projects: Project[] = [
@@ -188,3 +203,52 @@ export const skills: Skill[] = [
     { name: "Convex", level: "beginner", category: "database", logo: "/SkillIcons/convex.ico" },
 
 ]
+
+
+export const Testimonials: Testimonial[] = [
+    {
+        userName: "Kaushal Rijal",
+        stars: 4,
+        imageUrl: "/Images/Kaushal_Rijal.jpg",
+        content: "I have had the privilege of working with Prabin, and his full-stack developer skills are simply amazing. He possess an eye for detail, a problem-solving attitude, and a great capability to transform ideas into clean and effective code. His professionalism and commitment make his a precious addition to any team."
+    },
+    {
+        userName: "Joy Boy",
+        stars: 4.5,
+        imageUrl: "/Images/1.jpg",
+        content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi vel architecto modi maiores voluptatum laborum. Enim non possimus placeat in? Adipisci minima error unde! Culpa recusandae minus in necessitatibus est ipsum blanditiis placeat voluptates ratione odit, ex fugit, similique dolor natus ut harum architecto cum corrupti sequi at qui reiciendis."
+    },
+    {
+        userName: "Albert Rodrigue",
+        stars: 4,
+        imageUrl: "/Images/2.jpg",
+        content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi vel architecto modi maiores voluptatum laborum. Enim non possimus placeat in? Adipisci minima error unde! Culpa recusandae minus in necessitatibus est ipsum blanditiis placeat voluptates ratione odit, ex fugit, similique dolor natus ut harum architecto cum corrupti sequi at qui reiciendis."
+    },
+    {
+        userName: "Jane Doe",
+        stars: 3.5,
+        imageUrl: "/Images/3.jpg",
+        content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi vel architecto modi maiores voluptatum laborum. Enim non possimus placeat in? Adipisci minima error unde! Culpa recusandae minus in necessitatibus est ipsum blanditiis placeat voluptates ratione odit, ex fugit, similique dolor natus ut harum architecto cum corrupti sequi at qui reiciendis."
+    }
+]
+
+export const contactInfo: ContactInfo[] = [
+    {
+        icon: Mail,
+        label: 'Email',
+        value: 'acharyaprabin1025y@gmail.com',
+        href: 'mailto:acharyaprabin1025y@gmail.com'
+    },
+    {
+        icon: Phone,
+        label: 'Phone',
+        value: '+977 9741778031',
+        href: 'tel:+9779741778031'
+    },
+    {
+        icon: MapPin,
+        label: 'Location',
+        value: 'Dharan-8, Sunsari, Nepal',
+        href: '#Contact'
+    }
+];
