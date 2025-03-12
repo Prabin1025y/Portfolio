@@ -81,7 +81,7 @@ export const projects: Project[] = [
         description: "An online code editor supporting multiple programming languages and customizable themes—offering a smooth coding experience.",
         techStack: ["TypeScript", "NextJs", "Zustand", "Convex", "ShadCN"],
         imageUrl: "/ProjectsImage/lightcode.png",
-        websiteUrl: "#Projects",
+        websiteUrl: "https://lightcodedev.vercel.app",
         repositoryUrl: "https://github.com/Prabin1025y/LightCode",
     },
 ]

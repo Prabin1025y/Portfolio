@@ -12,7 +12,7 @@ export default function ProjectPage() {
   // Sample projects data - replace with your actual projects
 
   const warningProjects = ["GuffGaff", "Raag"]
-  const unavailableProjects = ["LightCode", "StoreHub"]
+  const unavailableProjects = ["StoreHub"]
 
   return (
         <section id='Projects' className='projectBG bg-[#8EDBD7]  dark:bg-[#255676] w-screen h-fit pt-32 sm:pt-60 px-2 sm:px-8 pb-10 md:px-16 lg:px-32 xl:px-56 2xl:px-72  flex flex-col gap-5'>

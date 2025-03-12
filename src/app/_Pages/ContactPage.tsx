@@ -1,10 +1,45 @@
-import { FaLinkedin, FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
+import axios from 'axios'
 import Link from 'next/link';
-import { Facebook, Github, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Github, Instagram, Linkedin, Loader } from "lucide-react";
 import { contactInfo } from "@/utils/Utilities";
 
 const ContactPage = () => {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false);
+
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+        e.preventDefault();
+
+        setLoading(true);
+
+        try {
+            const response = await axios.post("https://formspree.io/f/xjkyvplb", {
+                name,
+                email,
+                message,
+            });
+
+            if (response.status === 200) {
+                // Show success message and reset form
+                alert("Thank you for your feedback!");
+                setName("");
+                setEmail("");
+                setMessage("");
+            }
+        } catch (err) {
+            alert("Something went wrong")
+            console.log(err);
+
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <section id='Contact' className=' bg-[#DCF2F1]  dark:bg-[rgb(21,52,72)] w-screen  h-fit xl:-translate-y-[125px] relative font-[Inter] flex justify-center lg:justify-end px-3 sm:px-8 lg:px-16 xl:px-32 2xl:px-56 py-20'>
             <div className='translate-y-[50px] w-[90%] h-[80%] bg-[#8EDBD7] dark:bg-[#255676] rounded-md relative flex-col md:flex-row flex justify-between lg:justify-end lg:px-20 shadow-[18px_18px_24px_-17px_rgba(0,_0,_0,_0.8)]'>
@@ -31,21 +66,46 @@ const ContactPage = () => {
                     </ul>
                 </div>
 
-                <form className='w-full md:w-2/3 flex flex-col justify-center px-3 sm:px-10 lg:px-0 py-10  gap-5'>
+                <form onSubmit={handleSubmit} className='w-full md:w-2/3 flex flex-col justify-center px-3 sm:px-10 lg:px-0 py-10  gap-5'>
                     {/* <div className='flex gap-4'> */}
                     <h2 className='text-3xl font-semibold'>Get In Touch</h2>
                     <p>I’d love to hear from you! Feel free to reach out with any questions, feedback, or inquiries. Just drop your message below, and I’ll get back to you as soon as possible!</p>
-                    <input className='rounded-md border border-slate-500 w-full h-10 bg-[#226b6b] dark:bg-[#1A252B] focus:outline px-4 text-white' placeholder='Full Name' type="text" name='fullname' required />
-                    <input className='rounded-md border border-slate-500 w-full h-10 bg-[#226b6b] dark:bg-[#1A252B] focus:outline px-4' placeholder='Email' type="email" name='email' required />
+                    <input
+                        className='rounded-md border border-slate-500 w-full h-10 bg-[#226b6b] dark:bg-[#1A252B] focus:outline px-4 text-white'
+                        placeholder='Full Name'
+                        type="text"
+                        name='fullname'
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                    />
+                    <input
+                        className='rounded-md border border-slate-500 w-full h-10 bg-[#226b6b] dark:bg-[#1A252B] focus:outline px-4'
+                        placeholder='Email'
+                        type="email"
+                        name='email'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
                     {/* </div> */}
-                    <textarea className='w-full rounded-md block border border-slate-500 bg-[#226b6b] dark:bg-[#1A252B] focus:outline p-4' placeholder='Type your message here.' name="message" id="message" rows={10} required></textarea>
-                    <button type='submit' className='w-48 h-10 rounded-md flex items-center justify-center bg-[#F5A800] text-black font-semibold hover:scale-105 transition-all duration-300'>Submit</button>
-                    <ul className='md:hidden flex justify-between w-full mt-5 gap-4'>
+                    <textarea
+                        className='w-full rounded-md block border border-slate-500 bg-[#226b6b] dark:bg-[#1A252B] focus:outline p-4'
+                        placeholder='Type your message here.'
+                        name="message"
+                        id="message"
+                        rows={10}
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        required
+                    ></textarea>
+                    <button disabled={loading} type='submit' className='w-48 h-10 rounded-md flex items-center justify-center bg-[#F5A800] text-black font-semibold hover:scale-105 transition-all duration-300'>{loading ? <Loader className='animate-spin' /> : "Submit"}</button>
+                    {/* <ul className='md:hidden flex justify-between w-full mt-5 gap-4'>
                         <li><Link target='_blank' href="https://www.linkedin.com/in/prabin-acharya-9345b32b5/"><FaLinkedin size={30} className='cursor-pointer' /></Link></li>
                         <li><Link target='_blank' href="https://www.facebook.com/prabin.acharya.1025"><FaFacebook size={30} className='cursor-pointer' /></Link></li>
                         <li><Link target='_blank' href="https://github.com/Prabin1025y/"><FaGithub size={30} className='cursor-pointer' /></Link></li>
                         <li><Link target='_blank' href="https://www.instagram.com/prabin_acharya__/"><FaInstagram size={30} className='cursor-pointer' /></Link></li>
-                    </ul>
+                    </ul> */}
                 </form>
             </div>
         </section>
