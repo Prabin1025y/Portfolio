@@ -1,4 +1,4 @@
-import { Code2, Palette, Code, MonitorCog, LibraryBig, DatabaseIcon, Wrench, Mail, Phone, MapPin } from "lucide-react"
+import { Code2, Palette, Code, MonitorCog, LibraryBig, DatabaseIcon, Wrench, Mail, Phone, MapPin, MessageCircleMore, Music4, ShoppingCart, Gamepad2 } from "lucide-react"
 
 
 
@@ -10,6 +10,7 @@ interface Project {
     imageUrl: string
     websiteUrl: string
     repositoryUrl: string
+    featured: boolean
 }
 
 interface ContactInfo {
@@ -46,6 +47,7 @@ export const projects: Project[] = [
         imageUrl: "/ProjectsImage/guffgaff.png",
         websiteUrl: "https://guffgaff-kpsd.onrender.com",
         repositoryUrl: "https://github.com/Prabin1025y/GuffGaff",
+        featured: false,
     },
     {
         id: "2",
@@ -55,6 +57,7 @@ export const projects: Project[] = [
         imageUrl: "/ProjectsImage/raag.png",
         websiteUrl: "https://raag.onrender.com",
         repositoryUrl: "https://github.com/Prabin1025y/Raag",
+        featured: true,
     },
     {
         id: "3",
@@ -64,6 +67,7 @@ export const projects: Project[] = [
         imageUrl: "/ProjectsImage/storehub.png",
         websiteUrl: "#Projects",
         repositoryUrl: "https://github.com/Prabin1025y/StoreHub",
+        featured: false,
     },
     {
         id: "4",
@@ -74,6 +78,7 @@ export const projects: Project[] = [
         imageUrl: "/ProjectsImage/bettertogether.png",
         websiteUrl: "https://prabinacharya.itch.io/better-together",
         repositoryUrl: "https://github.com/Prabin1025y/Better-Together",
+        featured: true,
     },
     {
         id: "5",
@@ -83,9 +88,26 @@ export const projects: Project[] = [
         imageUrl: "/ProjectsImage/lightcode.png",
         websiteUrl: "https://lightcodedev.vercel.app",
         repositoryUrl: "https://github.com/Prabin1025y/LightCode",
+        featured: false,
     },
 ]
 
+export const getProjectIcon = (projectName: string) => {
+    switch (projectName) {
+        case "GuffGaff":
+            return <MessageCircleMore className="h-5 w-5 text-cyan-500 dark:text-cyan-400" />
+        case "Raag":
+            return <Music4 className="h-5 w-5 text-cyan-500 dark:text-cyan-400" />
+        case "StoreHub":
+            return <ShoppingCart className="h-5 w-5 text-cyan-500 dark:text-cyan-400" />
+        case "Better Together":
+            return <Gamepad2 className="h-5 w-5 text-cyan-500 dark:text-cyan-400" />
+        case "LightCode":
+            return <Code2 className="h-5 w-5 text-cyan-500 dark:text-cyan-400" />
+        default:
+            return <Code2 className="h-5 w-5 text-cyan-500 dark:text-cyan-400" />
+    }
+}
 
 export const getLevelColor = (level: SkillLevel) => {
     switch (level) {
@@ -252,3 +274,7 @@ export const contactInfo: ContactInfo[] = [
         href: '#Contact'
     }
 ];
+
+export const warningProjects = ["GuffGaff", "Raag"];
+export const unavailableProjects = ["StoreHub"];
+export const notAWebsite = ["Better Together"];

@@ -1,30 +1,129 @@
-import Image from 'next/image'
-import React from 'react'
-import { FaReact } from "react-icons/fa";
-import GithubButton from './uiverse/GithubButton';
-import VisitSiteButton from './uiverse/VisitSiteButton';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Github,
+  ExternalLink,
+  AlertTriangle,
+  Code,
+  Sparkles,
+} from "lucide-react";
+import { projectCardProps } from "@/types";
+import {  getProjectIcon, warningProjects } from "@/utils/Utilities";
+import Link from "next/link";
 
-const ProjectCard = () => {
-    return (
-        <div className='flex px-4 py-4 gap-4 bg-[#3AA6A6] border-[#153448] dark:bg-[#153448] rounded-2xl fotn-[Inter] cursor-pointer group hover:-translate-x-3 hover:-translate-y-3 transition-all overflow-hidden duration-300 hover:shadow-[19px_17px_27px_-5px_#153448]'>
-            <div className='px-2 lg:px-4 grid place-items-center text-3xl font-[Roboto] font-bold'>1</div>
-            <div className='relative min-w-[200px] lg:min-w-[300px] min-h-full overflow-hidden rounded-xl border border-white group-hover:-translate-x-5 group-hover:-translate-y-5 group-hover:shadow-[19px_17px_27px_-5px_rgba(0,_0,_0,_0.7)] transition-all duration-300 '>
-                <Image className='object-cover' src="/1.jpg" fill alt='picture' />
-            </div>
-            <div className='flex flex-col justify-between py-2'>
-                <div className='text-lg lg:text-2xl font-semibold'>RAAG - Feel The Music</div>
-                <div className='flex gap-2 items-center'>
-                    <div className='bg-green-300 text-blue-950 rounded-md px-2 py-1 text-[0.5rem] lg:text-xs font-bold flex gap-1 items-center'><FaReact size="1.2em" color='navy' /><p>REACT</p></div>
-                    <div className='bg-green-300 text-blue-950 rounded-md px-2 py-1 text-[0.5rem] lg:text-xs font-bold flex gap-1 items-center'><FaReact size="1.2em" color='navy' /> REACT</div>
-                </div>
-                <p className='text-[#81CDFF] text-sm lg:text-base font-semibold line-clamp-3'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex suscipit possimus perspiciatis ut, cupiditate tempore est nemo maiores laudantium, a ullam nesciunt corrupti quisquam ipsa quod itaque animi, consequuntur voluptatibus commodi omnis voluptatem magni modi officia! Sequi beatae incidunt cumque recusandae sit sapiente vel, mollitia alias, eum, ipsum facere inventore provident. Eos laborum inventore est delectus?</p>
-                <div className='flex justify-end px-10 gap-4 items-center'>
-                    <GithubButton />
-                    <VisitSiteButton />
-                </div>
-            </div>
-        </div>
-    )
-}
+const ProjectCard = ({
+  title,
+  description,
+  image,
+  techStack,
+  githubUrl,
+  liveUrl,
+  featured,
+}: projectCardProps) => {
+  return (
+    <div className="p-2 h-full group">
+      <Card
+        className={`relative overflow-hidden transition-all duration-500 ease-out transform hover:scale-105 hover:shadow-2xl border-0 bg-gradient-to-br from-slate-50 to-white dark:from-[#1a2b3c] dark:to-[#0f1a24] flex flex-col h-full group-hover:shadow-xl shadow-lg`}
+      >
+        {/* Animated background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-blue-500/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-export default ProjectCard
+        {/* Featured badge */}
+        {featured && (
+          <div className="absolute top-4 right-4 z-10">
+            <Badge className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white border-0 animate-pulse">
+              <Sparkles className="w-3 h-3 mr-1" />
+              Featured
+            </Badge>
+          </div>
+        )}
+
+        <CardHeader className="p-6 relative flex-none">
+          {/* Project Image */}
+          <div className="relative h-48 w-full overflow-hidden rounded-t-lg bg-gradient-to-br from-blue-100 to-blue-200 dark:from-[#1a2b3c] dark:to-[#0f1a24]">
+            <img
+              src={image}
+              alt={title}
+              className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 scale-100`}
+            />
+            {/* Overlay gradient */}
+            <div
+              className={`absolute inset-0 bg-gradient-to-t from-black/40 to-transparent transition-opacity duration-300 group-hover:opacity-100 opacity-0`}
+            />
+          </div>
+
+          {/* Title and description */}
+          <div className="py-6 px-0 pb-2">
+            <CardTitle className="text-xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent mb-2 flex items-center gap-2">
+              {/* <Code className="w-5 h-5 text-cyan-500 dark:text-cyan-400" /> */}
+              {getProjectIcon(title)}
+              {title}
+            </CardTitle>
+            <CardDescription className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3">
+              {description}
+            </CardDescription>
+          </div>
+        </CardHeader>
+
+        <CardContent className="px-6 pb-4 flex-grow flex flex-col">
+          {/* Tech Stack Badges */}
+          <div className="flex flex-1 grow-0 flex-wrap gap-2 mb-4">
+            {techStack.map((tech, index) => (
+              <Badge
+                key={tech}
+                variant="secondary"
+                className={`text-xs px-2 py-1 font-medium transition-all duration-300 hover:scale-110 cursor-default bg-gradient-to-r from-cyan-100 to-blue-100 dark:from-cyan-900/50 dark:to-blue-900/50 text-cyan-700 dark:text-cyan-300 hover:from-cyan-200 hover:to-blue-200 dark:hover:from-cyan-800/50 dark:hover:to-blue-800/50`}
+              >
+                {tech}
+              </Badge>
+            ))}
+          </div>
+
+          {/* Warning Alert */}
+          {warningProjects.includes(title) && (
+            <div className="mt-auto border border-red-500/50 bg-red-50/50 dark:bg-red-950/30 dark:border-red-500/30 flex items-center gap-2 p-2 rounded-md">
+              <AlertTriangle size={16} className="text-red-500 dark:text-red-400" />
+              <p className="text-xs text-red-700 dark:text-red-300">
+                Site may render slower on first load
+              </p>
+            </div>
+          )}
+        </CardContent>
+
+        <CardFooter className="px-6 pb-6 pt-0 flex-none">
+          {/* Action Buttons */}
+          <div className="flex gap-3 w-full">
+            <Link className="flex-1" href={githubUrl} target="_blank">
+              <Button className="w-full bg-gradient-to-r from-gray-700 to-gray-800 dark:from-gray-600 dark:to-gray-700 hover:from-gray-800 hover:to-gray-900 dark:hover:from-gray-500 dark:hover:to-gray-600 !text-white transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                <Github className="w-4 h-4 mr-2 !text-white" />
+                GitHub
+              </Button>
+            </Link>
+
+            <Link className="flex-1" href={liveUrl} target="_blank">
+              <Button className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-500 dark:to-blue-500 hover:from-cyan-700 hover:to-blue-700 dark:hover:from-cyan-400 dark:hover:to-blue-400 !text-white transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                <ExternalLink className="w-4 h-4 mr-2 !text-white" />
+                Live Demo
+              </Button>
+            </Link>
+          </div>
+        </CardFooter>
+
+        {/* Animated border on hover */}
+        <div
+          className={`absolute inset-0 rounded-lg transition-all duration-500 group-hover:ring-2 group-hover:ring-cyan-400/50 dark:group-hover:ring-cyan-500/50 group-hover:ring-offset-2 group-hover:ring-offset-white dark:group-hover:ring-offset-[#1a2b3c]`}
+        />
+      </Card>
+    </div>
+  );
+};
+
+export default ProjectCard;
