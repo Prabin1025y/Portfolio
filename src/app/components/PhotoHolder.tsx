@@ -3,9 +3,7 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import React from "react";
 import UseMounted from "../hooks/UseMounted";
-import styles from "./PhotoHolder.module.css";
 
-/* HTML: <div class="loader"></div> */
 
 const PhotoHolder = () => {
   const { theme } = useTheme();

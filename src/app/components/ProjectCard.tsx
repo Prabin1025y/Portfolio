@@ -12,12 +12,12 @@ import {
   Github,
   ExternalLink,
   AlertTriangle,
-  Code,
   Sparkles,
 } from "lucide-react";
 import { projectCardProps } from "@/types";
 import {  getProjectIcon, warningProjects } from "@/utils/Utilities";
 import Link from "next/link";
+import Image from "next/image";
 
 const ProjectCard = ({
   title,
@@ -49,7 +49,7 @@ const ProjectCard = ({
         <CardHeader className="p-6 relative flex-none">
           {/* Project Image */}
           <div className="relative h-48 w-full overflow-hidden rounded-t-lg bg-gradient-to-br from-blue-100 to-blue-200 dark:from-[#1a2b3c] dark:to-[#0f1a24]">
-            <img
+            <Image
               src={image}
               alt={title}
               className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 scale-100`}
@@ -76,7 +76,7 @@ const ProjectCard = ({
         <CardContent className="px-6 pb-4 flex-grow flex flex-col">
           {/* Tech Stack Badges */}
           <div className="flex flex-1 grow-0 flex-wrap gap-2 mb-4">
-            {techStack.map((tech, index) => (
+            {techStack.map((tech) => (
               <Badge
                 key={tech}
                 variant="secondary"
