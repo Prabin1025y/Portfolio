@@ -189,6 +189,8 @@ export const getCategoryLabel = (category: SkillCategory) => {
     }
 }
 
+export const darkImageSkills = ["ShadCN", "NextJS", "Socket.io", "Express.js", "Bcrypt.js", "Prisma"];
+
 export const skills: Skill[] = [
     // Languages
     { name: "JavaScript", level: "intermediate", category: "languages", logo: "/SkillIcons/js.svg" },
@@ -223,6 +225,7 @@ export const skills: Skill[] = [
     { name: "Mongoose", level: "intermediate", category: "database", logo: "/SkillIcons/mongoose.svg" },
     { name: "PostgreSQL", level: "intermediate", category: "database", logo: "/SkillIcons/postgress.svg" },
     { name: "Convex", level: "beginner", category: "database", logo: "/SkillIcons/convex.ico" },
+    { name: "Prisma", level: "beginner", category: "database", logo:"/SkillIcons/prisma.svg"}
 
 ]
 

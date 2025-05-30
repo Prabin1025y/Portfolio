@@ -28,7 +28,7 @@ const Navbar = () => {
           <li><DarkModeSwitch /></li>
           <Link href="#Home" className='hidden lg:block cursor-pointer font-semibold  transition hover:text-[#376c85] dark:hover:text-[var(--extra-blue)]'>HOME</Link>
           <Link href="#Projects" className='hidden lg:block cursor-pointer font-semibold  transition hover:text-[#376c85] dark:hover:text-[var(--extra-blue)]'>PROJECTS</Link>
-          <Link href="#" className='hidden lg:block cursor-not-allowed font-semibold  transition hover:text-[#376c85] dark:hover:text-[var(--extra-blue)]'>BLOG</Link>
+          <Link href="/blog" className='hidden lg:block cursor-pointer font-semibold  transition hover:text-[#376c85] dark:hover:text-[var(--extra-blue)]'>BLOG</Link>
           <Link href="#AboutMe" className='hidden lg:block cursor-pointer font-semibold  transition hover:text-[#376c85] dark:hover:text-[var(--extra-blue)]'>ABOUT</Link>
           <Link href="#Contact" className='hidden lg:block cursor-pointer font-semibold  transition hover:text-[#376c85] dark:hover:text-[var(--extra-blue)]'>CONTACT</Link>
           {/* <button onClick={()=>setsideBarOpen(true)} className='lg:hidden'><Menu /></button> */}

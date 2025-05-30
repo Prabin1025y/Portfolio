@@ -1,5 +1,5 @@
 import type React from "react"
-import { getCategoryIcon, getCategoryLabel, getLevelColor, Skill, SkillCategory, skills } from "@/utils/Utilities"
+import { darkImageSkills, getCategoryIcon, getCategoryLabel, getLevelColor, Skill, SkillCategory, skills } from "@/utils/Utilities"
 import Image from "next/image"
 
 export default function SkillsSection() {
@@ -75,8 +75,6 @@ interface SkillInCategoryProps {
   levelColor: string
   index?: number
 }
-
-const darkImageSkills = ["ShadCN", "NextJS", "Socket.io", "Express.js", "Bcrypt.js"];
 
 function SquareSkillInCategory({ skill, levelColor, index = 0 }: SkillInCategoryProps) {
   return (

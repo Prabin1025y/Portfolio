@@ -53,6 +53,7 @@ const ProjectCard = ({
               src={image}
               alt={title}
               className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 scale-100`}
+              fill
             />
             {/* Overlay gradient */}
             <div
@@ -100,20 +101,26 @@ const ProjectCard = ({
 
         <CardFooter className="px-6 pb-6 pt-0 flex-none">
           {/* Action Buttons */}
-          <div className="flex gap-3 w-full">
-            <Link className="flex-1" href={githubUrl} target="_blank">
-              <Button className="w-full bg-gradient-to-r from-gray-700 to-gray-800 dark:from-gray-600 dark:to-gray-700 hover:from-gray-800 hover:to-gray-900 dark:hover:from-gray-500 dark:hover:to-gray-600 !text-white transition-all duration-300 hover:scale-105 hover:shadow-lg">
+          <div className="flex gap-3 w-full relative z-10">
+            <Button
+              asChild
+              className="flex-1 bg-gradient-to-r from-gray-700 to-gray-800 dark:from-gray-600 dark:to-gray-700 hover:from-gray-800 hover:to-gray-900 dark:hover:from-gray-500 dark:hover:to-gray-600 !text-white transition-all duration-300 hover:scale-105 hover:shadow-lg relative z-10"
+            >
+              <Link href={githubUrl} target="_blank" className="w-full">
                 <Github className="w-4 h-4 mr-2 !text-white" />
                 GitHub
-              </Button>
-            </Link>
+              </Link>
+            </Button>
 
-            <Link className="flex-1" href={liveUrl} target="_blank">
-              <Button className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-500 dark:to-blue-500 hover:from-cyan-700 hover:to-blue-700 dark:hover:from-cyan-400 dark:hover:to-blue-400 !text-white transition-all duration-300 hover:scale-105 hover:shadow-lg">
+            <Button
+              asChild
+              className="flex-1 bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-500 dark:to-blue-500 hover:from-cyan-700 hover:to-blue-700 dark:hover:from-cyan-400 dark:hover:to-blue-400 !text-white transition-all duration-300 hover:scale-105 hover:shadow-lg relative z-10"
+            >
+              <Link href={liveUrl} target="_blank" className="w-full">
                 <ExternalLink className="w-4 h-4 mr-2 !text-white" />
                 Live Demo
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </CardFooter>
 
