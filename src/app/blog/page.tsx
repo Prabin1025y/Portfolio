@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import {
-  Home,
-  ArrowLeft,
   Code,
   Wrench,
   Zap,
@@ -145,7 +143,7 @@ export default function UnderDevelopmentPage() {
             <div className="absolute -inset-4 bg-gradient-to-r from-teal-500/20 via-cyan-500/20 to-blue-500/20 blur-lg rounded-lg animate-pulse"></div>
           </div>
           <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto leading-relaxed mt-6">
-            We're crafting something amazing! While you wait, why not try our
+            We&apos;re crafting something amazing! While you wait, why not try our
             mini-game?
           </p>
         </div>
