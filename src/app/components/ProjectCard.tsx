@@ -8,14 +8,13 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Github,
-  ExternalLink,
-  AlertTriangle,
-  Sparkles,
-} from "lucide-react";
+import { Github, ExternalLink, AlertTriangle, Sparkles } from "lucide-react";
 import { projectCardProps } from "@/types";
-import {  getProjectIcon, warningProjects } from "@/utils/Utilities";
+import {
+  getProjectIcon,
+  unavailableProjects,
+  warningProjects,
+} from "@/utils/Utilities";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -91,7 +90,10 @@ const ProjectCard = ({
           {/* Warning Alert */}
           {warningProjects.includes(title) && (
             <div className="mt-auto border border-red-500/50 bg-red-50/50 dark:bg-red-950/30 dark:border-red-500/30 flex items-center gap-2 p-2 rounded-md">
-              <AlertTriangle size={16} className="text-red-500 dark:text-red-400" />
+              <AlertTriangle
+                size={16}
+                className="text-red-500 dark:text-red-400"
+              />
               <p className="text-xs text-red-700 dark:text-red-300">
                 Site may render slower on first load
               </p>
@@ -112,15 +114,17 @@ const ProjectCard = ({
               </Link>
             </Button>
 
-            <Button
-              asChild
-              className="flex-1 bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-500 dark:to-blue-500 hover:from-cyan-700 hover:to-blue-700 dark:hover:from-cyan-400 dark:hover:to-blue-400 !text-white transition-all duration-300 hover:scale-105 hover:shadow-lg relative z-10"
-            >
-              <Link href={liveUrl} target="_blank" className="w-full">
-                <ExternalLink className="w-4 h-4 mr-2 !text-white" />
-                Live Demo
-              </Link>
-            </Button>
+            {!unavailableProjects.includes(title) && (
+              <Button
+                asChild
+                className="flex-1 bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-500 dark:to-blue-500 hover:from-cyan-700 hover:to-blue-700 dark:hover:from-cyan-400 dark:hover:to-blue-400 !text-white transition-all duration-300 hover:scale-105 hover:shadow-lg relative z-10"
+              >
+                <Link href={liveUrl} target="_blank" className="w-full">
+                  <ExternalLink className="w-4 h-4 mr-2 !text-white" />
+                  Live Demo
+                </Link>
+              </Button>
+            )}
           </div>
         </CardFooter>
 
