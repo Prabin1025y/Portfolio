@@ -39,7 +39,7 @@ export default function SkillsSection() {
           {Array.from(new Set(skills.map((skill) => skill.category))).map((category, index) => (
             <div
               key={category}
-              className="bg-[#3AA6A6] dark:bg-[#255676] rounded-lg shadow-sm overflow-hidden border animate-fade-in-up hover:scale-102 transition-transform duration-200"
+              className="bg-gradient-to-br from-[#3AA6A6] via-[#89D6D6] to-[#3AA6A6]  dark:from-[#255676] dark:to-[#346486] rounded-lg shadow-sm overflow-hidden border animate-fade-in-up hover:scale-102 transition-transform duration-200"
               style={{ animationDelay: `${index * 50}ms` }}
             >
               <div className="p-3">
@@ -81,7 +81,7 @@ const darkImageSkills = ["ShadCN", "NextJS", "Socket.io", "Express.js", "Bcrypt.
 function SquareSkillInCategory({ skill, levelColor, index = 0 }: SkillInCategoryProps) {
   return (
     <div
-      className="relative flex md:flex-col items-center justify-start md:justify-center gap-3 p-2 bg-[#aee0dd] dark:bg-[#153448] rounded-md shadow-sm transition-all md:aspect-square hover:scale-105 animate-fade-in-up"
+      className="relative flex md:flex-col items-center justify-start md:justify-center gap-3 p-2 bg-gradient-to-br from-[#ffffff]  to-[#d2fffc] dark:from-[#0F2433] dark:via-[#153448] dark:to-[#28485e]  rounded-md shadow-sm transition-all md:aspect-square hover:scale-105 animate-fade-in-up"
       style={{ animationDelay: `${index * 50}ms`, transitionDuration: '0.2s' }}
     >
       <div className={`absolute top-[5%] rounded-md left-0 h-[90%] w-1 md:w-full md:h-1 ${levelColor}`}></div>
