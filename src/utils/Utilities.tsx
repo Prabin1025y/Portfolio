@@ -137,7 +137,7 @@ export const projects: Project[] = [
       "Web-based project that uses neuroevolution to train an AI to play Flappy Bird autonomously.",
     techStack: ["TypeScript", "p5.js", "Genetic Algorithm"],
     imageUrl: "/ProjectsImage/flappy_bird_ai.png",
-    websiteUrl: "https://clicker-game-prabin.vercel.app",
+    websiteUrl: "https://prabin1025y.github.io/Flappy-Bird-Neuroevolution/",
     repositoryUrl: "https://prabin1025y.github.io/Flappy-Bird-Neuroevolution",
     featured: false,
   },
