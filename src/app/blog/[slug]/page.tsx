@@ -1,6 +1,16 @@
 import {promises as fs} from 'fs'
 import path from 'path'
 import {compileMDX} from 'next-mdx-remote/rsc'
+import rehypePrettyCode from "rehype-pretty-code";
+
+/** @type {import('rehype-pretty-code').Options} */
+const options = {
+    theme:{
+        dark: "one-dark-pro",
+        light: "one-light"
+    },
+    keepBackground: false,
+};
 
 import Link from "next/link"
 import Image from "next/image"
@@ -10,6 +20,7 @@ import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { BackgroundPattern } from "@/app/components/BackgroundPattern"
 import { Post } from '@/types'
+import { mdxComponents } from '@/lib/markdown-components';
 
 const post = {
     tags: ['react', 'next'],
@@ -37,8 +48,12 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         const {content, frontmatter} = await compileMDX<Post>({
             source: fileContent,
             options:{
-                parseFrontmatter: true
-            }
+                parseFrontmatter: true,
+                mdxOptions:{
+                    rehypePlugins: [[rehypePrettyCode, options]],
+                }
+            },
+            components: mdxComponents
         })
 
 
