@@ -1,0 +1,396 @@
+---
+title: "Displaying MDX pages in Next.js"
+excerpt: "Guide to setting up MDX in a Next.js project using next-mdx-remote"
+date: "2025-06-03"
+authorName: "Prabin Acharya"
+tags: Next.js, MDX,next-mdx-remote, Tailwind, JavaScript, TypeScript
+authorAvatar: /pp.jpg
+thumbnail: mdx_pages_in_nextjs.png
+---
+
+## Introduction
+
+Welcome to this comprehensive guide on building a modern blog with MDX and Next.js! In this tutorial, we'll explore how to create a powerful, type-safe, and beautifully styled blog using the latest web technologies. Whether you're a seasoned developer or just starting with Next.js, this guide will walk you through everything you need to know to set up a production-ready markdown page.
+
+### What You'll Learn
+
+- Setting up a Next.js project with MDX support
+- Understanding the project structure and file organization
+- Implementing dynamic routing for blog posts
+- Styling your content with Tailwind Typography
+- Working with frontmatter for post metadata
+
+## Table of Contents
+
+1. [Project Setup](#1-initialize-a-nextjs-project)
+   - [Installation](#1-initialize-a-nextjs-project)
+   - [Dependencies](#2-install-dependencies)
+   - [Project Structure](#folder-structure)
+2. [Core Concepts](#3-import-required-modules)
+   - [Required Modules](#3-import-required-modules)
+   - [Frontmatter](#what-is-frontmatter)
+3. [Implementation](#4-blogpost-component)
+4. [Styling](#5-styling-with-tailwind-typography)
+   - [Why Tailwind Typography?](#why-are-styles-reset)
+   - [Installation](#installation)
+   - [Configuration](#usage)
+   - [Customization](#customization-optional)
+5. [Example](#example)
+
+Let's get started!
+
+<span id="1-initialize-nextjs-project" />
+## 1. Initialize a Next.js Project
+
+```bash
+npx create-next-app@latest my-mdx-blog
+cd my-mdx-blog
+npm install
+```
+
+<span id="2-install-dependencies" />
+## 2. Install Dependencies
+
+```bash
+npm install next-mdx-remote
+```
+
+`next-mdx-remote` is a powerful package that helps you use MDX (Markdown with JSX) in your Next.js applications. It allows you to:
+- Write content in MDX format (combining Markdown with React components)
+- Load and render MDX content dynamically
+- Parse frontmatter (metadata at the top of MDX files)
+- Use React components within your Markdown content
+
+<span id="folder-structure" />
+## Folder Structure
+
+```bash
+my-mdx-blog/
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   └── blog/
+│   │       └── [slug]/
+│   │           └── page.tsx
+│   └── contents/
+│       └── posts/
+│           └── example-post.mdx
+├── package.json
+├── next.config.js
+├── tailwind.config.ts
+└── tsconfig.json
+```
+
+Let's understand the key parts of this structure:
+
+1. `src/app/blog/[slug]/page.tsx`:
+   - The `[slug]` folder name uses Next.js dynamic routing
+   - This is where we'll render our MDX blog posts
+
+2. `src/contents/posts/`:
+   - This is where all your MDX blog post files will live
+   - Each `.mdx` file in this directory represents a blog post
+   - The filename (without .mdx) will be used as the URL slug
+   - For example, `example-post.mdx` will be accessible at `/blog/example-post`
+
+> **Important Note**: The `contents` folder and its structure is not created automatically by Next.js. You'll need to create these folders manually:
+> ```bash
+> mkdir -p src/contents/posts
+> ```
+> This is where you'll store all your MDX blog post files.
+
+<span id="3-import-required-modules" />
+## 3. Import Required Modules
+
+```tsx showLineNumbers {4}
+//blog/[slug]/page.tsx
+import path from "path";
+import {promises as fs} from "fs";
+import { compileMDX } from "next-mdx-remote/rsc";
+import { notFound } from "next/navigation";
+```
+
+Let's understand what each import does:
+
+- `path`: Node.js built-in module which will be used to read the file path of our MDX files
+- `fs`: Node.js file system module (using promises version) to read MDX files from the filesystem
+- `compileMDX`: Core function from next-mdx-remote that compiles MDX content into React components and also parses the frontmatter
+- `notFound`: Next.js utility to show 404 page when a blog post isn't found
+
+<span id="what-is-frontmatter" />
+### What is Frontmatter?
+
+Frontmatter is metadata at the top of your MDX files, enclosed between `---` markers. It's commonly used to store information about your blog post like title, date, author, etc. Here's an example:
+
+```mdx showLineNumbers {2-5}
+---
+title: "My First Blog Post"
+date: "2024-03-20"
+author: "John Doe"
+tags: ["Next.js", "MDX", "Web Development"]
+---
+
+# My First Blog Post
+This is the actual content of my blog post...
+```
+
+When this MDX file is compiled, the frontmatter will be available as a JavaScript object:
+```js
+{
+  title: "My First Blog Post",
+  date: "2024-03-20",
+  author: "John Doe",
+  tags: ["Next.js", "MDX", "Web Development"]
+}
+```
+
+<span id="4-blogpost-component" />
+## 4. BlogPost Component
+
+```tsx showLineNumbers{5} {19-24}
+//blog/[slug]/page.tsx
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  try {
+    const resolvedParams = await params;
+
+    if (!resolvedParams || !resolvedParams.slug) {
+      notFound();
+    }
+
+    const { slug } = resolvedParams;
+
+    // Read the MDX file with the help of path and fs module
+    const fileContent = await fs.readFile(
+      path.join(process.cwd(), "src/contents/posts", `${slug}.mdx`),
+      "utf-8"
+    );
+
+    // Compile the MDX file with the help of compileMDX function
+    const { content, frontmatter } = await compileMDX({
+      source: fileContent,
+      options: {
+        parseFrontmatter: true,
+      },
+    });
+
+    if (!fileContent) {
+      notFound();
+    }
+
+    return (
+      <article className="prose">
+        <h1>{frontmatter.title}</h1>
+        {content}
+      </article>
+    );
+  } catch (error) {
+    console.error(error);
+    //You can add toast here
+    notFound();
+  }
+}
+```
+
+<span id="5-styling-with-tailwind-typography" />
+## 5. Styling with Tailwind Typography
+
+But wait! Something's not quite right. Our blog posts look plain and unformatted. The markdown content isn't styled properly, and it doesn't have that polished, professional look we want. That's where Tailwind Typography comes to the rescue!
+
+<span id="why-are-styles-reset" />
+### Why Are Styles Reset?
+
+By default, Tailwind CSS resets all default browser styles to ensure consistency across different browsers. This is great for building custom UIs, but it means our markdown content loses its default styling. That's why our blog posts initially look unstyled - we need to explicitly tell Tailwind how to style our markdown content.
+
+### What is Tailwind Typography?
+Tailwind Typography is a plugin that provides beautiful typographic defaults to any vanilla HTML. It's perfect for styling markdown content because it:
+
+- Automatically styles all your markdown elements (headings, lists, blockquotes, etc.)
+- Provides consistent spacing and typography
+- Works seamlessly with dark mode
+- Is highly customizable
+
+<span id="installation" />
+### Installation
+
+```bash
+npm install -D @tailwindcss/typography
+```
+
+Then add it to your `tailwind.config.ts`:
+
+```ts showLineNumbers {2} /typography/3
+//tailwind.config.ts
+import typography from '@tailwindcss/typography'
+
+export default {
+  // ...other config
+  plugins: [typography],
+}
+```
+
+<span id="usage" />
+### Usage
+
+The most important part is adding the `prose` class to your article element. Without this class, none of the typography styles will be applied:
+
+```tsx showLineNumbers /prose/ {3}
+//blog/[slug]/page.tsx
+<article className="prose">
+  {content}
+</article>
+```
+
+> **Important**: The `prose` class is required! It's the key that unlocks all the typography styles. Without it, your markdown content will remain unstyled.
+
+The `prose` class will automatically style:
+- Headings (h1-h6)
+- Paragraphs
+- Lists (ordered and unordered)
+- Blockquotes
+- Code blocks
+- Tables
+- And more!
+
+<span id="customization-optional" />
+### Customization (Optional)
+
+You can customize the typography styles in your `tailwind.config.ts`:
+
+```ts showLineNumbers {8-9, 15-16}
+//tailwind.config.ts
+theme: {
+  extend: {
+    typography: {
+      DEFAULT: {
+        css: {
+          // Light mode styles
+          '--tw-prose-body': theme('colors.gray.800'),
+          '--tw-prose-headings': theme('colors.gray.900'),
+        },
+      },
+      dark: {
+        css: {
+          // Dark mode styles
+          '--tw-prose-body': theme('colors.gray.300'),
+          '--tw-prose-headings': theme('colors.white'),
+        },
+      },
+    },
+  },
+}
+```
+
+<span id="example" />
+### Example
+
+Let's walk through the complete process of creating and viewing a blog post:
+
+1. **Create the Blog Post**
+```bash
+# Create the posts directory if it doesn't exist
+mkdir -p src/contents/posts
+   
+# Create your MDX file
+touch src/contents/posts/my-first-post.mdx
+```
+
+2. **Write Your Content**
+
+````mdx showLineNumbers
+// contents/posts/my-first-post.mdx
+---
+title: "Hello, MDX World!"
+date: "2024-03-20"
+author: "Your Name"
+tags: ["MDX", "Next.js", "Tailwind"]
+---
+
+# Welcome to My First MDX Post
+
+This is a sample post to demonstrate how MDX and Tailwind Typography work together.
+
+## Features We're Using
+
+- **Markdown** for content
+- **MDX** for React components
+- **Tailwind Typography** for styling
+
+### Code Example
+
+Here's a simple React component we can use in our MDX:
+
+```tsx
+function Greeting({ name }: { name: string }) {
+  return <h2>Hello, {name}!</h2>
+}
+```
+
+### Blockquotes
+
+> This is a blockquote. It's styled automatically by Tailwind Typography!
+
+### Lists
+
+1. First item
+2. Second item
+3. Third item
+
+- Unordered list
+- With multiple items
+- And proper spacing
+
+### Tables
+
+| Feature | Description |
+|---------|-------------|
+| MDX | Markdown with JSX |
+| Typography | Beautiful text styling |
+| Dark Mode | Automatic dark mode support |
+````
+
+3. **View Your Post**
+   - Start your development server: `npm run dev{:bash}`
+   - Visit: `http://localhost:3000/blog/my-first-post`
+
+4. **What's Happening Behind the Scenes**
+   - When you visit `/blog/my-first-post`:
+     1. Next.js matches the URL to your `[slug]` dynamic route
+     2. The `BlogPost` component reads the MDX file
+     3. `next-mdx-remote` compiles the MDX content
+     4. Tailwind Typography styles the content with the `prose` class
+
+<span id="5-common-issues-and-solutions" />
+5. **Common Issues and Solutions**
+   - **Post not found?** Check if:
+     - The file exists in `src/contents/posts`
+     - The filename matches the URL slug
+     - The file extension is `.mdx`
+   - **Styles not applying?** Verify:
+     - The `prose` class is added to your article element
+     - Tailwind Typography is installed and configured
+     - Your `tailwind.config.ts` includes the typography plugin
+     - Your `global.css` include all three `base`, `components`, `utilities` of tailwindcss
+
+## Thats it!
+
+You've successfully set up a modern MDX blog with Next.js! You now have:
+
+- A powerful blog system that combines the best of Markdown and React
+- Beautiful typography that makes your content shine
+- A solid foundation for building more features
+
+{/* ## 📚 Also Read */}
+
+{/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+  <div className="p-6 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+    <h3 className="text-xl font-bold mb-2">Styling Codeblocks in MDX</h3>
+    <p className="text-gray-600 dark:text-gray-300 mb-4">Learn how to add syntax highlighting, line numbers, and beautiful styling to code blocks in your MDX blog posts like this one you're reading right now.</p>
+    <a href="/blog/nextjs-app-router" className="text-blue-600 dark:text-blue-400 hover:underline">Read More →</a>
+  </div>
+</div> */}
+
+
+
+
+

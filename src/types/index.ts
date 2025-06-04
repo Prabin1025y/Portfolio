@@ -7,3 +7,15 @@ export type projectCardProps = {
     liveUrl: string
     featured: boolean
 }
+
+export interface Post {
+  slug: string
+  title: string
+  date: string
+  excerpt: string
+  authorName: string
+  authorAvatar: string
+  readingTime: string
+  thumbnail: string
+  tags: string
+}

@@ -50,6 +50,7 @@ html {
     clip-path: polygon(0 0, 150px 0, 150px 90px, 200px 140px, calc(100% - 150px) 140px, calc(100% - 50px) 180px, 100% 250px, 100% 100%, 0 100%);
   }
 }
+
 @media (max-width: 700px) {
   .projectBG {
     transform: translateY(0px);
@@ -132,4 +133,86 @@ html {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.prose figcaption {
+  background-color: rgb(234, 255, 250);
+  border: 1px solid gray;
+  border-bottom: none;
+}
+
+html.dark .prose figcaption{
+  background-color: #04181f;
+}
+
+.prose pre {
+  border-radius: 0 0 0.5rem 0.5rem;
+  border: 1px solid gray;
+}
+
+.prose p, .prose li{
+  color: black;
+}
+
+html.dark .prose p, html.dark .prose li{
+  color: white;
+}
+
+pre [data-line] {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+code[data-line-numbers] {
+  counter-reset: line;
+}
+
+code[data-line-numbers]>[data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 0.75rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: gray;
+}
+
+code[data-line-numbers-max-digits="2"]>[data-line]::before {
+  width: 1.25rem;
+}
+
+code[data-line-numbers-max-digits="3"]>[data-line]::before {
+  width: 1.75rem;
+}
+
+code[data-line-numbers-max-digits="4"]>[data-line]::before {
+  width: 2.25rem;
+}
+
+code[data-theme*=" "],
+code[data-theme*=" "] span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+ 
+html.dark code[data-theme*=" "],
+html.dark code[data-theme*=" "] span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
+html.dark span[data-highlighted-line]{
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+span[data-highlighted-line]{
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+mark[data-highlighted-chars]{
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+html.dark mark[data-highlighted-chars]{
+  background-color: rgba(255, 255, 255, 0.2) !important;
 }
