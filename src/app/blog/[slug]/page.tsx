@@ -21,18 +21,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { BackgroundPattern } from "@/app/components/BackgroundPattern"
 import { Post } from '@/types'
 import { mdxComponents } from '@/lib/markdown-components';
+import { getReadingTime } from '@/utils/Utilities';
 
-const post = {
-    tags: ['react', 'next'],
-    author: {
-        avatar: "/cartoon.jpg",
-        name: "Prabin Acharya"
-    },
-    title: "New Blog",
-    date: "2025-05-05",
-    coverImage: "/cartoon.jpg",
-    readTime: "24"
-}
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
 
@@ -57,7 +47,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         })
 
 
-        if (!post) {
+        if (!fileContent) {
             notFound()
         }
 
@@ -78,7 +68,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                     </Link>
                     {/* Content container with blurred background */}
                     <div className="mx-auto max-w-3xl 
-                     backdrop-blur-md rounded-2xl p-8 border border-muted-foreground/30 ">
+                     backdrop-blur-lg rounded-2xl p-8  ">
                         <div className="mb-6 flex flex-wrap gap-2">
                             {frontmatter.tags.split(",").map((tag, index) => (
                                 <Badge key={tag + index} variant="outline" className="dark:bg-[#3a7ca0]/20 border-[#3a7ca0]/40">
@@ -106,7 +96,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                                 </div>
                                 <div className="flex items-center gap-1 text-sm text-muted-foreground">
                                     <Clock className="h-4 w-4" />
-                                    <span>{frontmatter.readingTime} min read</span>
+                                    <span>{getReadingTime(fileContent)} read</span>
                                 </div>
                             </div>
                         </div>

@@ -52,7 +52,7 @@ export function BlogCard({ post }: BlogCardProps) {
           <div className="mb-4 flex flex-wrap gap-2">
             {tags.slice(0, 3).map((tag, index) => (
               <Badge
-                key={tag}
+                key={tag + index}
                 variant="outline"
                 className="bg-blue-50 dark:bg-[#3a7ca0]/15 text-blue-700 dark:text-blue-200 border-blue-200 dark:border-[#3a7ca0]/30 hover:bg-blue-100 dark:hover:bg-[#3a7ca0]/25 transition-all duration-200 text-xs font-medium px-3 py-1"
               >
@@ -111,7 +111,7 @@ export function BlogCard({ post }: BlogCardProps) {
               <div className="w-1 h-1 rounded-full bg-gray-400 dark:bg-slate-500" />
               <div className="flex items-center gap-1.5">
                 <Clock className="h-3.5 w-3.5" />
-                <span className="font-medium">{post.readingTime} min read</span>
+                <span className="font-medium">{post.readingTime} read</span>
               </div>
             </div>
 

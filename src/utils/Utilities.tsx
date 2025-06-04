@@ -59,6 +59,13 @@ interface Testimonial {
   content: string;
 }
 
+export function getReadingTime(content: string): string {
+  const wordsPerMinute = 200
+  const words = content.split(/\s+/).length
+  const minutes = Math.ceil(words / wordsPerMinute)
+  return `${minutes} min`
+}
+
 export const projects: Project[] = [
   {
     id: "1",

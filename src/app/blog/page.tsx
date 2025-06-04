@@ -1,17 +1,10 @@
-import { blogPosts } from "@/utils/blogs";
 import { BlogCard } from "./_component/BlogCard";
 import { BackgroundPattern } from "../components/BackgroundPattern";
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { Post } from "@/types";
-
-function getReadingTime(content: string): string {
-  const wordsPerMinute = 200
-  const words = content.split(/\s+/).length
-  const minutes = Math.ceil(words / wordsPerMinute)
-  return `${minutes} min`
-}
+import { getReadingTime } from "@/utils/Utilities";
 
 function getPosts(): Post[] {
   //get directory of blogs
@@ -25,7 +18,6 @@ function getPosts(): Post[] {
 
   //get all filenames inside content/posts
   const filenames = fs.readdirSync(postsDirectory)
-  console.log(filenames)
 
   //if filename ends with .mdx, get its path, content and extract data and content using graymatter
   const posts: Post[] = filenames
@@ -61,9 +53,9 @@ export default function Home() {
       {/* Content */}
       <div className="container relative mx-auto px-4 py-12" style={{ zIndex: 1 }}>
         <header className="mb-12 text-center">
-          <h1 className="mb-4 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">Our Blog</h1>
+          <h1 className="mb-4 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">My Blog</h1>
           <p className="mx-auto max-w-2xl text-lg ">
-            Discover the latest insights, tutorials, and stories from our team of experts
+            Discover the latest insights, tutorials, and stories.
           </p>
         </header>
 

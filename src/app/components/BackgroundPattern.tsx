@@ -1,6 +1,6 @@
 export const BackgroundPattern = () => {
   return (
-    <div className="fixed inset-0 top-20 pointer-events-none" style={{ zIndex: 0 }}>
+    <div className="fixed inset-0 top-10 lgtop-20 pointer-events-none" style={{ zIndex: 0 }}>
       {/* Main gradient background - Light Mode */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#f8fafc] via-[#8EDBD7]/20 to-[#8EDBD7]/30 dark:from-[#0d2230] dark:via-[#173a52] dark:to-[#255676]"></div>
 

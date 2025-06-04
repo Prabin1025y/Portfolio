@@ -22,7 +22,7 @@ const Navbar = () => {
   return (
     <>
       <nav className={`z-20 ${isScrolled ? "bg-[#7FC7D9]/80 dark:bg-[#214359]/80 backdrop-blur-md " : "bg-[#7FC7D9] dark:bg-[#214359]"} text-[#0F1035] dark:text-white transition duration-300 h-14 lg:h-20 flex sticky top-0 justify-between items-center px-4 sm:px-10`}>
-        <p className='font-[Inter] font-bold tracking-[4px] text-base sm:text-xl'>PRABIN.DEV</p>
+        <Link href="/#Home" className='font-[Inter] font-bold tracking-[4px] text-base sm:text-xl'>PRABIN.DEV</Link>
         <ul className='flex gap-5 sm:gap-10 font-[Inter] tracking-widest text-sm items-center'>
           {/* <li className='cursor-pointer transition duration-300'>switch</li> */}
           <li><DarkModeSwitch /></li>

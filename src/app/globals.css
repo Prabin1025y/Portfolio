@@ -150,6 +150,14 @@ html.dark .prose figcaption{
   border: 1px solid gray;
 }
 
+.prose p, .prose li{
+  color: black;
+}
+
+html.dark .prose p, html.dark .prose li{
+  color: white;
+}
+
 pre [data-line] {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -191,4 +199,20 @@ html.dark code[data-theme*=" "],
 html.dark code[data-theme*=" "] span {
   color: var(--shiki-dark);
   background-color: var(--shiki-dark-bg);
+}
+
+html.dark span[data-highlighted-line]{
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+span[data-highlighted-line]{
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+mark[data-highlighted-chars]{
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+html.dark mark[data-highlighted-chars]{
+  background-color: rgba(255, 255, 255, 0.2) !important;
 }

@@ -20,6 +20,7 @@ const NavSecondary = () => {
 
 
 
+
     const OnClickHandler = (event: React.MouseEvent<HTMLLIElement>) => {
         Array.from(OlElement.current?.children || []).forEach(element => {
             (element as HTMLElement).style.color = 'white'
@@ -42,11 +43,11 @@ const NavSecondary = () => {
                     </div>
                     <div className='h-full aspect-square bg-emerald-900 dark:bg-cyan-600 rounded-tl-[24px]' />
                 </div>
-                <li  onClick={(e) => OnClickHandler(e)} className='z-30'><Link href="#Home"><Home size={20} /></Link></li>
-                <li onClick={(e) => OnClickHandler(e)} className='z-30'><Link href="#Projects"><FolderCode size={20} /></Link></li>
-                <li onClick={(e) => OnClickHandler(e)} className='z-30'><Link href="#Home"><Newspaper size={20} /></Link></li>
-                <li onClick={(e) => OnClickHandler(e)} className='z-30'><Link href="#AboutMe"><SquareUserRound size={20} /></Link></li>
-                <li onClick={(e) => OnClickHandler(e)} className='z-30'><Link href="#Contact"><Phone size={20} /></Link></li>
+                <li onClick={(e) => OnClickHandler(e)} className='z-30'><Link href="/#Home"><Home size={20} /></Link></li>
+                <li onClick={(e) => OnClickHandler(e)} className='z-30'><Link href="/#Projects"><FolderCode size={20} /></Link></li>
+                <li onClick={(e) => OnClickHandler(e)} className='z-30'><Link href="/blog"><Newspaper size={20} /></Link></li>
+                <li onClick={(e) => OnClickHandler(e)} className='z-30'><Link href="/#AboutMe"><SquareUserRound size={20} /></Link></li>
+                <li onClick={(e) => OnClickHandler(e)} className='z-30'><Link href="/#Contact"><Phone size={20} /></Link></li>
             </ol>
         </div>
     )

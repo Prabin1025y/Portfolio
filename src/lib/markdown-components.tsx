@@ -11,7 +11,6 @@ export const mdxComponents: MDXComponents = {
         <span className="text-sm">
           {props["data-language"]}
         </span>
-        {/* <CopyButton text={reactToText(props.children)} /> */}
         <CopyButton text={reactToText(props.children)}/>
       </figcaption>
       <pre
