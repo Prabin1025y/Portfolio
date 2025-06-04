@@ -1,11 +1,12 @@
-import {promises as fs} from 'fs'
+import { promises as fs } from 'fs'
 import path from 'path'
-import {compileMDX} from 'next-mdx-remote/rsc'
+import { compileMDX } from 'next-mdx-remote/rsc'
 import rehypePrettyCode from "rehype-pretty-code";
+import type { Metadata } from 'next';
 
 /** @type {import('rehype-pretty-code').Options} */
 const options = {
-    theme:{
+    theme: {
         dark: "one-dark-pro",
         light: "one-light"
     },
@@ -23,6 +24,57 @@ import { Post } from '@/types'
 import { mdxComponents } from '@/lib/markdown-components';
 import { getReadingTime } from '@/utils/Utilities';
 
+export async function generateStaticParams() {
+    const postsDirectory = path.join(process.cwd(), "src/contents/posts")
+    const posts = await fs.readdir(postsDirectory);
+    return posts
+        .filter(post => post.endsWith(".mdx"))
+        .map(post => ({ slug: post.split(".")[0] }))
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params
+
+    const fileContent = await fs.readFile(path.join(process.cwd(), "src/contents/posts", `${slug}.mdx`), 'utf-8')
+    const { frontmatter } = await compileMDX<Post>({
+        source: fileContent,
+        options: {
+            parseFrontmatter: true
+        }
+    })
+
+    return {
+        title: frontmatter.title,
+        description: frontmatter.excerpt,
+        generator: 'Next.js',
+        applicationName: 'Prabin Acharya Portfolio',
+        referrer: 'origin-when-cross-origin',
+        keywords: frontmatter.tags.split(",").map(tag => tag.trim()),
+        authors: [{ name: 'Prabin ACharya' }],
+        creator: 'Prabin Acharya',
+        openGraph: {
+            title: frontmatter.title,
+            description: frontmatter.excerpt,
+            type: "article",
+            publishedTime: '2025-04-06T00:00:00.000Z',
+            authors: ['Prabin']
+        },
+        robots: {
+            index: true,
+            follow: true,
+            nocache: false,
+            googleBot: {
+                index: true,
+                follow: true,
+                noimageindex: false,
+                'max-video-preview': -1,
+                'max-image-preview': 'large',
+                'max-snippet': -1,
+            },
+        },
+    }
+}
+
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
 
@@ -35,11 +87,11 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         const { slug } = resolvedParams
 
         const fileContent = await fs.readFile(path.join(process.cwd(), "src/contents/posts", `${slug}.mdx`), 'utf-8')
-        const {content, frontmatter} = await compileMDX<Post>({
+        const { content, frontmatter } = await compileMDX<Post>({
             source: fileContent,
-            options:{
+            options: {
                 parseFrontmatter: true,
-                mdxOptions:{
+                mdxOptions: {
                     rehypePlugins: [[rehypePrettyCode, options]],
                 }
             },
@@ -102,7 +154,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                         </div>
 
                         <div className="relative mb-8 aspect-video overflow-hidden rounded-lg">
-                            <Image src={`/BlogThumbnails/${frontmatter.thumbnail}`|| "/placeholder.svg"} alt={frontmatter.title} fill className="object-cover" />
+                            <Image src={`/BlogThumbnails/${frontmatter.thumbnail}` || "/placeholder.svg"} alt={frontmatter.title} fill className="object-cover" />
                         </div>
 
                         <div className="prose dark:prose-invert mx-auto max-w-none">

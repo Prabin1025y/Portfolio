@@ -60,7 +60,7 @@ interface Testimonial {
 }
 
 export function getReadingTime(content: string): string {
-  const wordsPerMinute = 200
+  const wordsPerMinute = 100
   const words = content.split(/\s+/).length
   const minutes = Math.ceil(words / wordsPerMinute)
   return `${minutes} min`

@@ -5,6 +5,41 @@ import path from 'path'
 import matter from 'gray-matter'
 import { Post } from "@/types";
 import { getReadingTime } from "@/utils/Utilities";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title:"Blog | Prabin Acharya",
+  description: "Explore different blogs related to it from Prabin Acharya",
+  generator: 'Next.js',
+  applicationName: 'Prabin Acharya Portfolio',
+  referrer: 'origin-when-cross-origin',
+  keywords: ['nextjs', 'blog', 'react', 'article', 'tutorial', 'docs', 'examples', 'prabin', 'acharya'],
+  authors: [{ name: 'Prabin ACharya' }],
+  creator: 'Prabin Acharya',
+  openGraph: {
+    title: {
+      template: 'Blog - %s | Prabin Acharya',
+      default: "Blog | Prabin Acharya"
+    },
+    description: "Explore different blogs related to it from Prabin Acharya",
+    type: "article",
+    publishedTime: '2025-04-06T00:00:00.000Z',
+    authors: ['Prabin']
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+}
 
 function getPosts(): Post[] {
   //get directory of blogs
