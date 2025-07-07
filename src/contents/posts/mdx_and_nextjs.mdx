@@ -104,7 +104,7 @@ Let's understand the key parts of this structure:
 ## 3. Import Required Modules
 
 ```tsx showLineNumbers {4}
-//blog/[slug]/page.tsx
+//post/[slug]/page.tsx
 import path from "path";
 import {promises as fs} from "fs";
 import { compileMDX } from "next-mdx-remote/rsc";
@@ -116,7 +116,7 @@ Let's understand what each import does:
 - `path`: Node.js built-in module which will be used to read the file path of our MDX files
 - `fs`: Node.js file system module (using promises version) to read MDX files from the filesystem
 - `compileMDX`: Core function from next-mdx-remote that compiles MDX content into React components and also parses the frontmatter
-- `notFound`: Next.js utility to show 404 page when a blog post isn't found
+- `notFound`: Next.js utility to show 404 page when a post isn't found
 
 <span id="what-is-frontmatter" />
 ### What is Frontmatter?
@@ -235,7 +235,7 @@ export default {
 The most important part is adding the `prose` class to your article element. Without this class, none of the typography styles will be applied:
 
 ```tsx showLineNumbers /prose/ {3}
-//blog/[slug]/page.tsx
+//post/[slug]/page.tsx
 <article className="prose">
   {content}
 </article>

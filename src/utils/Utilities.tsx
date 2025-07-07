@@ -16,6 +16,7 @@ import {
   Bird,
   BrainCircuit,
   ShipWheel,
+  Tv,
 } from "lucide-react";
 
 interface Project {
@@ -69,6 +70,22 @@ export function getReadingTime(content: string): string {
 export const projects: Project[] = [
   {
     id: "1",
+    title: "AnimeGhar",
+    description:
+      "A simple anime streaming website that allows user to watch anime online with userfriendly interface and automatic updates on new episodes and anime.",
+    techStack: [
+      "NextJS",
+      "TailwindCSS",
+      "ShadCN",
+      "react-player",
+    ],
+    imageUrl: "/ProjectsImage/animeghar.png",
+    websiteUrl: "https://animeghar.vercel.app",
+    repositoryUrl: "https://github.com/Prabin1025y/AnimeGhar",
+    featured: true,
+  },
+  {
+    id: "2",
     title: "GuffGaff",
     description:
       "A real-time chat application built using the MERN stack. It supports real-time messaging, user authentication, active status and has a pleasing simple user interface.",
@@ -87,7 +104,7 @@ export const projects: Project[] = [
     featured: false,
   },
   {
-    id: "2",
+    id: "3",
     title: "Raag",
     description:
       "A beautifully designed music player with an admin panel for managing songs, albums, and users—featuring personalized recommendations and advanced state management.",
@@ -105,7 +122,7 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    id: "3",
+    id: "4",
     title: "StoreHub",
     description:
       "A sleek e-commerce app with cart functionality, secure authentication, and responsive design—built with MongoDB, React hooks, and JWT.",
@@ -116,7 +133,7 @@ export const projects: Project[] = [
     featured: false,
   },
   {
-    id: "4",
+    id: "5",
     title: "Better Together",
     description:
       "Two player level based, platformer, pixel game where two players have to work together to complete the levels",
@@ -127,7 +144,7 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    id: "5",
+    id: "6",
     title: "LightCode",
     description:
       "An online code editor supporting multiple programming languages and customizable themes—offering a smooth coding experience.",
@@ -138,7 +155,7 @@ export const projects: Project[] = [
     featured: false,
   },
   {
-    id: "6",
+    id: "7",
     title: "Flappy Bird AI (NeuroEvolution)",
     description:
       "Web-based project that uses neuroevolution to train an AI to play Flappy Bird autonomously.",
@@ -149,7 +166,7 @@ export const projects: Project[] = [
     featured: false,
   },
   {
-    id: "7",
+    id: "8",
     title: "Neural Network from Scratch",
     description:
       "A Python project implementing a simple neural network from scratch using NumPy to classify handwritten digits from the MNIST dataset.",
@@ -160,7 +177,7 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    id: "8",
+    id: "9",
     title: "Genetic Algorithm Steering",
     description:
       "A Python project implementing a simple neural network from scratch using NumPy to classify handwritten digits from the MNIST dataset.",
@@ -194,6 +211,8 @@ export const getProjectIcon = (projectName: string) => {
       return <BrainCircuit className="h-5 w-5 text-cyan-500 dark:text-cyan-400" />;
     case "Genetic Algorithm Steering":
       return <ShipWheel className="h-5 w-5 text-cyan-500 dark:text-cyan-400" />;
+    case "AnimeGhar":
+      return <Tv className="h-5 w-5 text-cyan-500 dark:text-cyan-400" />;
     default:
       return <Code2 className="h-5 w-5 text-cyan-500 dark:text-cyan-400" />;
   }
